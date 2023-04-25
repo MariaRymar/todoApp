@@ -3,10 +3,12 @@ function Menu({ showCategory, createCategory, categoryList }) {
   return (
     <div>
       <button onClick={() => showCategory("")}>Show All</button>
-      <button onClick={() => showCategory("Home")}>Home</button>
-      <button onClick={() => showCategory("Work")}>Work</button>
+      {categoryList.map((category) => (
+        <button key={category.id} onClick={() => showCategory(category.value)}>
+          {category.value}
+        </button>
+      ))}
       <AddCategory createCategory={createCategory} />
-
     </div>
   );
 }
