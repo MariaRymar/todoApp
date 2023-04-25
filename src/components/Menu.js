@@ -6,6 +6,7 @@ function Menu({ showCategory, createCategory, categoryList }) {
       <button onClick={() => showCategory("Home")}>Home</button>
       <button onClick={() => showCategory("Work")}>Work</button>
       <AddCategory createCategory={createCategory} />
+
     </div>
   );
 }
