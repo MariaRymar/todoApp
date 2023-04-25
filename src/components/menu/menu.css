@@ -1,0 +1,47 @@
+.menu__container {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    width: 100%;
+}
+
+.menu__buttons__container {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    row-gap: 1px;
+    padding-top: 2rem;
+}
+
+.button__container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #eae7e779;
+    border-radius: 25px;
+    padding: 1.7rem;
+    align-items: center;
+    transition: var(--transition);
+    border: 1px solid transparent;
+
+
+    
+}
+.button__container:hover {
+    background-color:var(--color-bg);
+    transition: var(--transition);
+    border-color: var(--color-primary-variant);
+    cursor: pointer;
+}
+
+.button__container div {
+    display: flex;
+    column-gap: 0.7rem;
+}
+.button__container div>svg {
+    color: green;
+}
+.menu__buttons__container div button {
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+
+}

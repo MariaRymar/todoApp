@@ -1,0 +1,29 @@
+
+.addInput {
+    margin-bottom: 2rem;
+}
+.addInput form input {
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 2rem;
+    width: 100%;
+    background-color: var(--color-bg);
+    border: 1px solid transparent;
+    transition: var(--transition);
+
+   
+}
+
+.addInput form input:hover {
+    background-color:var(--color-bg);
+    transition: var(--transition);
+    border-color: var(--color-primary-variant);
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+.addInput form select {
+    height: fit-content;
+    border-radius: 2rem;
+    padding: 0.6rem;
+   
+}

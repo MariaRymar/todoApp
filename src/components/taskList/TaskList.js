@@ -1,22 +1,23 @@
-import Task from "./Task";
+import Task from "../Task";
+import './taskList.css'
 
-function TaskList({ taskList, category }) {
+function TaskList({ taskList, category, changeCompletion }) {
   return (
     <div>
       {category ? (
-        <div>
+        <div className='tasklist'>
           {taskList.map((task) => {
             return task.category === category ? (
-              <Task key={task.id} task={task} />
+              <Task key={task.id} task={task} changeCompletion={changeCompletion} />
             ) : (
               <div key={task.id}></div>
             );
           })}
         </div>
       ) : (
-        <div>
+        <div className='tasklist'>
           {taskList.map((task) => (
-            <Task key={task.id} task={task} />
+            <Task key={task.id} task={task} changeCompletion={changeCompletion} />
           ))}
         </div>
       )}
