@@ -44,6 +44,7 @@ function AddTask({ createTask, categoryList }) {
     <div className='addInput'>
       <form ref={clickRef} onSubmit={submitForm}>
         <input
+        className='styledInput'
           
           value={inputValue.value}
           onChange={(e) =>

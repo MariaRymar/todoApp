@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { BiCheckbox } from "react-icons/bi";
 import { FiTrash } from "react-icons/fi";
-function Task({ task, changeCompletion }) {
+
+function Task({ task, changeCompletion, deleteTask }) {
   const [complete, setComplete] = useState(task.completion);
   const handleCompletionChange = () => {
     console.log(task);
     setComplete((prev) => !prev);
-    changeCompletion(task.id, complete);
+    changeCompletion(task.id, !complete);
   };
+
   return (
     <div className="task">
       <div className='task__left'>
@@ -21,10 +23,10 @@ function Task({ task, changeCompletion }) {
       <div className='task__right'>
         {task.dueDate}
         <BiCheckbox />
-        {task.category}
-        <FiTrash />
+        <FiTrash onClick={() => deleteTask(task.id)}/>
       </div>
     </div>
   );
 }
+
 export default Task;

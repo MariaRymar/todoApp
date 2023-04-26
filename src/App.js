@@ -66,35 +66,37 @@ function App() {
   };
 
   const changeCompletion = (id, complete) => {
+    const updatedTask = taskList.find((task) => task.id === id);
+
+    if (updatedTask) {
+      updatedTask.completion = complete;
+    }
   
+    setNewTaskList([...taskList]);
+
   };
 
-  let workCount = 0;
-  let homeCount = 0
-  //--for now --
-  taskList.forEach(task => {
-    if(task.category === 'Home') {
-      homeCount++
-    } else if (task.category === 'Work') {
-      workCount++
-    }
+  const deleteTask = (id) => {
+    let taskToDelete = taskList.filter(task => task.id !== id);
+    setNewTaskList(taskToDelete)
+  }
 
-  })
 
   return (
     <div className="container main__container">
       <Menu
-      length={taskList.length}
+        taskList={taskList}
         categoryList={categoryList}
         createCategory={createCategory}
         showCategory={showCategory}
-        homeCount={homeCount}
-        workCount={workCount}
+  
       />
       <div className="right__container">
         <GreetDate />
         <AddTask categoryList={categoryList} createTask={createTask} />
         <TaskList
+        deleteTask={deleteTask}
+  
           changeCompletion={changeCompletion}
           taskList={taskList}
           category={category}

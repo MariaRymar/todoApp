@@ -2,7 +2,7 @@ import "./menu.css";
 import AddCategory from "../AddCategory";
 import { BiCheckbox } from "react-icons/bi";
 
-function Menu({ showCategory, createCategory, categoryList, length, homeCount, workCount }) {
+function Menu({ showCategory, createCategory, categoryList, taskList }) {
   return (
     <div className="menu__container">
       <div className="menu__buttons__container">
@@ -11,8 +11,9 @@ function Menu({ showCategory, createCategory, categoryList, length, homeCount, w
             <BiCheckbox />
             <button>Show All</button>
           </div>
-          <p>{length}</p>
+          <p>{taskList.length}</p>
         </div>
+        
         {categoryList.map((category) => (
           <div
             className="button__container"
@@ -23,7 +24,7 @@ function Menu({ showCategory, createCategory, categoryList, length, homeCount, w
               <BiCheckbox />
               <button>{category.value}</button>
             </div>
-            {category.value === 'Home' ?<p>{homeCount}</p> : <p>{workCount}</p>}
+            <p>{taskList.filter(task => task.category === category.value).length}</p>
           </div>
         ))}
       </div>

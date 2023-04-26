@@ -23,9 +23,10 @@ function AddCategory({ createCategory }) {
 
   return (
     <div ref={clickRef}>
-      <div onClick={() => setIsOpen(!isOpen)}>+ Create New Category</div>
+      
       {isOpen ? (
         <form
+        className='styledInput category'
           onSubmit={(e) => {
             e.preventDefault();
             createCategory(newCategory);
@@ -39,7 +40,7 @@ function AddCategory({ createCategory }) {
             placeholder="Category Name"
           ></input>
         </form>
-      ) : null}
+      ) : <div className='styledInput category' onClick={() => setIsOpen(!isOpen)}>+ Create New Category</div>}
     </div>
   );
 }

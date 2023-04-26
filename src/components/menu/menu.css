@@ -2,14 +2,17 @@
     background-color: var(--color-white);
     border-radius: 20px;
     width: 100%;
+    min-height: 70vh;
+    height: fit-content;
+    padding: 2rem 2rem;
+
+
 }
 
 .menu__buttons__container {
     display: flex;
     flex-direction: column;
-    margin: 1rem;
-    row-gap: 1px;
-    padding-top: 2rem;
+    row-gap: 3px;
 }
 
 .button__container {

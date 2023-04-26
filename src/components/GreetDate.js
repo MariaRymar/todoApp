@@ -38,7 +38,7 @@ function GreetDate() {
 
   return (
     <div>
-      <h1>{greeting}!</h1>
+      <h1>{greeting}</h1>
       <h2>
         It's {dayOfWeek}, {month} {date}
       </h2>
