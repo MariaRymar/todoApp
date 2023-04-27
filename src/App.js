@@ -8,6 +8,7 @@ function App() {
   const [categoryList, setCategoryList] = useState([
     { id: "hm", value: "Home" },
     { id: "wk", value: "Work" },
+    { id: "complete", value: "Completed" },
   ]);
   const [category, setCategory] = useState("");
   const [taskList, setNewTaskList] = useState([
@@ -29,7 +30,7 @@ function App() {
       id: "d44",
       value: "Schedule a meeting",
       dueDate: "1 Mar",
-      completion: true,
+      completion: false,
       category: "Work",
     },
   ]);
@@ -71,16 +72,14 @@ function App() {
     if (updatedTask) {
       updatedTask.completion = complete;
     }
-  
-    setNewTaskList([...taskList]);
 
+    setNewTaskList([...taskList]);
   };
 
   const deleteTask = (id) => {
-    let taskToDelete = taskList.filter(task => task.id !== id);
-    setNewTaskList(taskToDelete)
-  }
-
+    let taskToDelete = taskList.filter((task) => task.id !== id);
+    setNewTaskList(taskToDelete);
+  };
 
   return (
     <div className="container main__container">
@@ -89,14 +88,12 @@ function App() {
         categoryList={categoryList}
         createCategory={createCategory}
         showCategory={showCategory}
-  
       />
       <div className="right__container">
         <GreetDate />
         <AddTask categoryList={categoryList} createTask={createTask} />
         <TaskList
-        deleteTask={deleteTask}
-  
+          deleteTask={deleteTask}
           changeCompletion={changeCompletion}
           taskList={taskList}
           category={category}

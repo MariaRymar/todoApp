@@ -111,6 +111,12 @@ h1{
     align-items:center;
 }
 
+.task__left >svg {
+    color: rgb(77, 181, 255);
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
 
 .styledInput{
     padding: 1rem;
@@ -142,4 +148,8 @@ h1{
     width: 100%;
     font-size: 1rem;
     
+}
+
+.bin {
+    /* color: rgb(243, 177, 177); */
 }

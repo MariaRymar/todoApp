@@ -1,43 +1,39 @@
 import Task from "../Task";
 import "./taskList.css";
 
-function TaskList({
-  taskList,
-  category,
-  changeCompletion,
-  deleteTask
-}) {
-  return (
-    <div>
-      {category ? (
-        <div className="tasklist">
-          {taskList.map((task) => {
-            return task.category === category ? (
-              <Task
-              deleteTask={deleteTask}
-                key={task.id}
-                task={task}
-                changeCompletion={changeCompletion}
-              />
-            ) : (
-              <div key={task.id}></div>
-            );
-          })}
-        </div>
-      ) : (
-        <div className="tasklist">
-          {taskList.map((task) => (
-            <Task
-              key={task.id}
-              deleteTask={deleteTask}
-              task={task}
-              changeCompletion={changeCompletion}
-            />
-          ))}
-        </div>
-      )}
-    </div>
-  );
+function TaskList({ taskList, category, changeCompletion, deleteTask }) {
+  const handleShowList = taskList.map((task) => {
+    if (category === "Completed" && task.completion) {
+      return (
+        <Task
+          deleteTask={deleteTask}
+          key={task.id}
+          task={task}
+          changeCompletion={changeCompletion}
+        />
+      );
+    } else if (task.category === category && !task.completion) {
+      return (
+        <Task
+          deleteTask={deleteTask}
+          key={task.id}
+          task={task}
+          changeCompletion={changeCompletion}
+        />
+      );
+    } else if (!category) {
+      return (
+        <Task
+          key={task.id}
+          deleteTask={deleteTask}
+          task={task}
+          changeCompletion={changeCompletion}
+        />
+      );
+    }
+  });
+
+  return <div className="tasklist">{handleShowList}</div>;
 }
 
 export default TaskList;

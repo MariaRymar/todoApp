@@ -8,7 +8,6 @@ function AddTask({ createTask, categoryList }) {
 
   const [isOpen, setIsOpen] = useState(false);
 
-
   const [inputValue, setInputValue] = useState({
     value: "",
     dueDate: new Date(),
@@ -34,18 +33,20 @@ function AddTask({ createTask, categoryList }) {
   const submitForm = (e) => {
     console.log(inputValue);
     e.preventDefault();
-    createTask(inputValue);
-    setInputValue({ value: "", dueDate: new Date(), category: "Home" });
-    setIsOpen(false);
+    if (inputValue.value) {
+      createTask(inputValue);
+      setInputValue({ value: "", dueDate: new Date(), category: "Home" });
+      setIsOpen(false);
+    } else {
+      alert("add name");
+    }
   };
 
-
   return (
-    <div className='addInput'>
+    <div className="addInput">
       <form ref={clickRef} onSubmit={submitForm}>
         <input
-        className='styledInput'
-          
+          className="styledInput"
           value={inputValue.value}
           onChange={(e) =>
             setInputValue({ ...inputValue, value: e.target.value })
@@ -54,7 +55,7 @@ function AddTask({ createTask, categoryList }) {
           placeholder="Write a New Task..."
         ></input>
         {isOpen ? (
-          <div>
+          <div className='addTaskForm'>
             <select
               value={inputValue.category}
               onChange={(e) => {
@@ -67,6 +68,7 @@ function AddTask({ createTask, categoryList }) {
             </select>
 
             <DatePicker
+            className='datepicker'
               selected={inputValue.dueDate}
               onChange={(date) =>
                 setInputValue({ ...inputValue, dueDate: date })

@@ -3,9 +3,25 @@
     margin-bottom: 2rem;
 }
 
-.addInput form select {
+.addInput form select,.addInput form button,.datepicker   {
     height: fit-content;
     border-radius: 2rem;
     padding: 0.6rem;
+    cursor: pointer;
    
+}
+.addTaskForm {
+    display: flex;
+}
+
+.addInput form button {
+    background-color: var(--color-primary-variant);
+    transition: var(--transition);
+
+    color: white;
+}
+
+.addInput form button:hover {
+    font-size: 0.9rem;
+    transition: var(--transition);
 }

@@ -1,6 +1,7 @@
 import "./menu.css";
 import AddCategory from "../AddCategory";
 import { BiCheckbox } from "react-icons/bi";
+import { TbCheckbox } from "react-icons/tb";
 
 function Menu({ showCategory, createCategory, categoryList, taskList }) {
   return (
@@ -13,7 +14,7 @@ function Menu({ showCategory, createCategory, categoryList, taskList }) {
           </div>
           <p>{taskList.length}</p>
         </div>
-        
+
         {categoryList.map((category) => (
           <div
             className="button__container"
@@ -21,10 +22,18 @@ function Menu({ showCategory, createCategory, categoryList, taskList }) {
             key={category.id}
           >
             <div>
-              <BiCheckbox />
+              {category.id === "complete" ? <TbCheckbox /> : <BiCheckbox />}
               <button>{category.value}</button>
             </div>
-            <p>{taskList.filter(task => task.category === category.value).length}</p>
+            <p>
+              {
+                taskList.filter((task) =>
+                  category.id === "complete"
+                    ? task.completion === true
+                    : task.category === category.value && !task.completion
+                ).length
+              }
+            </p>
           </div>
         ))}
       </div>
