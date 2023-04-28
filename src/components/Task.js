@@ -7,9 +7,8 @@ import { ImCheckboxChecked } from 'react-icons/im'
 function Task({ task, changeCompletion, deleteTask }) {
   const [complete, setComplete] = useState(task.completion);
   const handleCompletionChange = () => {
-    console.log(task);
     setComplete((prev) => !prev);
-    changeCompletion(task.id, !complete);
+    changeCompletion(task, !complete);
   };
 
   return (

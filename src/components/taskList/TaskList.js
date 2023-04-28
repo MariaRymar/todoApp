@@ -3,7 +3,8 @@ import "./taskList.css";
 
 function TaskList({ taskList, category, changeCompletion, deleteTask }) {
   const handleShowList = taskList.map((task) => {
-    if (category === "Completed" && task.completion) {
+    
+    if (category.value === "completed" && task.completion) {
       return (
         <Task
           deleteTask={deleteTask}
@@ -12,7 +13,7 @@ function TaskList({ taskList, category, changeCompletion, deleteTask }) {
           changeCompletion={changeCompletion}
         />
       );
-    } else if (task.category === category && !task.completion) {
+    } else if (task.category === category.label && !task.completion) {
       return (
         <Task
           deleteTask={deleteTask}
@@ -21,7 +22,8 @@ function TaskList({ taskList, category, changeCompletion, deleteTask }) {
           changeCompletion={changeCompletion}
         />
       );
-    } else if (!category) {
+    } 
+    else if (!category.value) {
       return (
         <Task
           key={task.id}
