@@ -136,10 +136,12 @@ h1{
     border-color: var(--color-primary-variant);
     cursor: pointer;
     font-size: 1.1rem;
+
 }
 .category {
     margin-top: 1rem;
     background-color: var(--color-white);
+
 }
 
 .category input {
@@ -147,6 +149,7 @@ h1{
     height: 100%;
     width: 100%;
     font-size: 1rem;
+    
     
 }
 

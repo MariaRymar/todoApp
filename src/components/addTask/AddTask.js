@@ -32,12 +32,12 @@ function AddTask({ createTask, categoryList }) {
 
   const submitForm = (e) => {
     e.preventDefault();
-    if (inputValue.value) {
+    if (inputValue.value && inputValue.category) {
       createTask(inputValue);
       setInputValue({ value: "", dueDate: new Date(), category: "" });
       setIsOpen(false);
     } else {
-      alert("add name");
+      alert("add name or category");
     }
   };
 
@@ -56,11 +56,13 @@ function AddTask({ createTask, categoryList }) {
         {isOpen ? (
           <div className="addTaskForm">
             <select
+   
               value={inputValue.category}
               onChange={(e) => {
                 setInputValue({ ...inputValue, category: e.target.value });
               }}
             >
+   
               {categoryList.map((category) =>
                 category.value === "completed" ||
                 category.value === "" ? null : (

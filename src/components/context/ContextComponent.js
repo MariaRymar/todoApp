@@ -85,11 +85,13 @@ function ContextProvider({ children }) {
   };
 
   // CREATE CATEGORY
+  const colors = ['red', 'green', 'blue', 'yellow', 'orange', 'pink', 'purple', 'brown']
 
   const createCategory = async (newCategory) => {
     const response = await axios.post("http://localhost:3001/categories", {
       label: newCategory,
-      value: newCategory
+      value: newCategory,
+      color: colors[Math.floor(Math.random()*colors.length)]
     });
 
     setCategoryList([...categoryList, response.data]);
@@ -106,10 +108,18 @@ function ContextProvider({ children }) {
 
   // DELETE CATEGORY
 
-  const deleteCategory = async (id) => {
-    const response = await axios.delete(`http://localhost:3001/categories/${id}`);
-    let categoryToDelete = categoryList.filter((category) => category.id !== id);
+  const deleteCategory = async (category) => {
+    const response = await axios.delete(`http://localhost:3001/categories/${category.id}`);
+    let categoryToDelete = categoryList.filter((cat) => cat.id !== category.id);
+    let tasksToDelete = taskList.filter(task => { 
+      if(task.category === category.label) {
+
+        deleteTask(task.id)
+      }
+      return task.category !== category.label
+    });
     setCategoryList(categoryToDelete);
+    setNewTaskList(tasksToDelete)
   };
  
 

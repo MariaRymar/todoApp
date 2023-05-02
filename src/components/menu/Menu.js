@@ -28,22 +28,22 @@ function Menu({
             key={category.id}
           >
             <div>
-              {category.value === "completed" ? <TbCheckbox /> : <BiCheckbox />}
+              {category.value === "completed" ? <TbCheckbox /> : <BiCheckbox style={{'color': `${category.color}`}} />}
               <button>{category.label}</button>
             </div>
             <div>
               {category.value === "completed" ||
               category.value === "" ? null : (
-                <FiTrash onClick={() => deleteCategory(category.id)}></FiTrash>
+                <FiTrash onClick={() => deleteCategory(category)}></FiTrash>
               )}
               <p>
                 {
                   taskList.filter((task) =>
                     category.value === "completed"
                       ? task.completion === true
-                      : category.value !== ""
-                      ? task.category === category.label && !task.completion
-                      : task
+                      : category.value === "" && !task.completion
+                      ? task
+                      : task.category === category.label && !task.completion
                   ).length
                 }
               </p>

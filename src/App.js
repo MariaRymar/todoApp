@@ -15,6 +15,7 @@ function App() {
   useEffect(() => {
     fetchTasks();
     fetchCategories()
+    showCategory('', 1)
 
   }, []);
  
@@ -36,6 +37,7 @@ function App() {
           changeCompletion={changeCompletion}
           taskList={taskList}
           category={category}
+          categoryList={categoryList}
         />
       </div>
     </div>
