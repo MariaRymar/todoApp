@@ -17,7 +17,7 @@
     row-gap: 3px;
 }
 
-.button__container {
+/* .button__container {
     display: flex;
     justify-content: space-between;
     background-color: #eae7e779;
@@ -26,10 +26,8 @@
     align-items: center;
     transition: var(--transition);
     border: 1px solid transparent;
-
-
     
-}
+} */
 .button__container:hover {
     background-color:var(--color-bg);
     transition: var(--transition);
@@ -48,5 +46,11 @@
     border: none;
     background-color: transparent;
     font-size: 1rem;
+
+}
+
+.active {
+    background-color:rgba(240, 240, 249, 0.396);
+    border-color: rgba(77, 181, 255, 0.416);
 
 }

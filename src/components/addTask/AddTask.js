@@ -2,9 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./addTask.css";
+import UseTaskContext from "../../hooks/use-task-context";
 
-function AddTask({ createTask, categoryList }) {
-  //fx default category
+function AddTask({}) {
+  const { createTask, categoryList } = UseTaskContext();
+
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -12,6 +14,7 @@ function AddTask({ createTask, categoryList }) {
     value: "",
     dueDate: new Date(),
     category: "",
+    detail: ""
   });
 
   const clickRef = useRef(null);
@@ -34,7 +37,7 @@ function AddTask({ createTask, categoryList }) {
     e.preventDefault();
     if (inputValue.value && inputValue.category) {
       createTask(inputValue);
-      setInputValue({ value: "", dueDate: new Date(), category: "" });
+      setInputValue({ value: "", dueDate: new Date(), category: "", detail: "" });
       setIsOpen(false);
     } else {
       alert("add name or category");
@@ -55,6 +58,7 @@ function AddTask({ createTask, categoryList }) {
         ></input>
         {isOpen ? (
           <div className="addTaskForm">
+            <input placeholder="Task details..." value={inputValue.detail} onChange={(e) => setInputValue({ ...inputValue, detail: e.target.value })}></input>
             <select
    
               value={inputValue.category}

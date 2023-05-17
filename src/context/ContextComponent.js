@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 const Context = createContext();
 
@@ -6,6 +6,25 @@ function ContextProvider({ children }) {
   const [taskList, setNewTaskList] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
   const [category, setCategory] = useState("");
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
+
+  // NAVIGATION
+
+  useEffect(() => {
+    const handler = () => {
+      setCurrentPath(window.location.pathname)
+    }
+
+    window.addEventListener('popstate', handler);
+    return window.removeEventListener('popstate', handler)
+
+  }, [])
+
+  const navigate = (to) => {
+    window.history.pushState({}, '', to);
+    setCurrentPath(to)
+  }
 
   // FETCH TASKS
 
@@ -46,6 +65,7 @@ function ContextProvider({ children }) {
       dueDate: `${day} ${month}`,
       completion: false,
       category: task.category,
+      detail: task.detail
     });
     setNewTaskList([...taskList, response.data]);
   };
@@ -136,7 +156,9 @@ function ContextProvider({ children }) {
         categoryList,
         category,
         fetchCategories,
-        deleteCategory
+        deleteCategory,
+        navigate,
+        currentPath
       }}
     >
       {children}

@@ -3,55 +3,55 @@ import AddCategory from "../AddCategory";
 import { BiCheckbox } from "react-icons/bi";
 import { TbCheckbox } from "react-icons/tb";
 import { FiTrash } from "react-icons/fi";
-function Menu({
-  showCategory,
-  createCategory,
-  categoryList,
-  taskList,
-  deleteCategory,
-}) {
+import UseTaskContext from "../../hooks/use-task-context";
+import Calendar from "../calendar/Calendar";
+
+function Menu() {
+
+  const { taskList, showCategory, createCategory, categoryList, deleteCategory, category, navigate,currentPath } = UseTaskContext();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log(currentPath)
+
+    navigate('/calendar')
+
+  }
   return (
     <div className="menu__container">
       <div className="menu__buttons__container">
-        {/* <div onClick={() => showCategory("")} className="button__container">
-          <div>
-            <BiCheckbox />
-            <button>Show All</button>
-          </div>
-          <p>{taskList.length}</p>
-        </div> */}
-
-        {categoryList.map((category) => (
-          <div
-            className="button__container"
-            onClick={() => showCategory(category.value, category.id)}
-            key={category.id}
+        {categoryList.map((mapCategory) => {
+         return ( <div
+            className={category.label === mapCategory.label ? 'button__container active' :`button__container`}
+            onClick={() => showCategory(mapCategory.value, mapCategory.id)}
+            key={mapCategory.id}
           >
             <div>
-              {category.value === "completed" ? <TbCheckbox /> : <BiCheckbox style={{'color': `${category.color}`}} />}
-              <button>{category.label}</button>
+              {mapCategory.value === "completed" ? <TbCheckbox /> : <BiCheckbox style={{'color': `${mapCategory.color}`}} />}
+              <button>{mapCategory.label}</button>
             </div>
             <div>
-              {category.value === "completed" ||
-              category.value === "" ? null : (
-                <FiTrash onClick={() => deleteCategory(category)}></FiTrash>
+              {mapCategory.value === "completed" ||
+              mapCategory.value === "" ? null : (
+                <FiTrash onClick={() => deleteCategory(mapCategory)}></FiTrash>
               )}
               <p>
                 {
                   taskList.filter((task) =>
-                    category.value === "completed"
+                  mapCategory.value === "completed"
                       ? task.completion === true
-                      : category.value === "" && !task.completion
+                      : mapCategory.value === "" && !task.completion
                       ? task
-                      : task.category === category.label && !task.completion
+                      : task.category === mapCategory.label && !task.completion
                   ).length
                 }
               </p>
             </div>
           </div>
-        ))}
+        )})}
       </div>
       <AddCategory createCategory={createCategory} />
+      <Calendar onClick={handleClick} />
     </div>
   );
 }

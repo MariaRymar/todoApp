@@ -1,39 +1,25 @@
 {
   "tasks": [
     {
-      "value": "reee",
-      "dueDate": "29 Apr",
-      "category": "hhh",
+      "value": "rrrr",
+      "dueDate": "2 Jun",
+      "category": "tyre3",
+      "completion": false,
+      "id": 1
+    },
+    {
+      "value": "errghj",
+      "dueDate": "17 May",
+      "category": "56yhgfde",
       "completion": false,
       "id": 2
     },
     {
-      "value": "ddd",
-      "dueDate": "2 May",
-      "category": "rg",
+      "value": "dsftgyh",
+      "dueDate": "10 May",
+      "category": "eftgrthyj",
       "completion": false,
-      "id": 5
-    },
-    {
-      "value": "edfv",
-      "dueDate": "3 May",
-      "category": "rg",
-      "completion": false,
-      "id": 6
-    },
-    {
-      "value": "edfv",
-      "dueDate": "3 May",
-      "category": "rg",
-      "completion": true,
-      "id": 7
-    },
-    {
-      "value": "fgh",
-      "dueDate": "3 May",
-      "category": "hhh",
-      "completion": true,
-      "id": 8
+      "id": 3
     }
   ],
   "categories": [
@@ -48,16 +34,28 @@
       "value": "completed"
     },
     {
-      "label": "hhh",
-      "value": "hhh",
+      "label": "dfg",
+      "value": "dfg",
       "color": "yellow",
-      "id": "QPhZNJQ"
+      "id": "YRP6ovo"
     },
     {
-      "label": "rg",
-      "value": "rg",
-      "color": "orange",
-      "id": "NaxU9qh"
+      "label": "eftgrthyj",
+      "value": "eftgrthyj",
+      "color": "brown",
+      "id": "1xZDjKP"
+    },
+    {
+      "label": "tyre3",
+      "value": "tyre3",
+      "color": "red",
+      "id": "hQKS_w0"
+    },
+    {
+      "label": "56yhgfde",
+      "value": "56yhgfde",
+      "color": "blue",
+      "id": "sGgvZKv"
     }
   ]
 }

@@ -1,7 +1,10 @@
 import Task from "../Task";
 import "./taskList.css";
+import UseTaskContext from "../../hooks/use-task-context";
 
-function TaskList({ taskList, category, changeCompletion, deleteTask, categoryList }) {
+function TaskList({}) {
+  const { taskList, deleteTask, changeCompletion, categoryList, category } = UseTaskContext();
+
   
   const handleShowList = taskList.map((task) => {
   

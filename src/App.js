@@ -3,43 +3,32 @@ import Menu from "./components/menu/Menu";
 import TaskList from "./components/taskList/TaskList";
 import AddTask from "./components/addTask/AddTask";
 import GreetDate from "./components/GreetDate";
-import { useContext} from 'react';
-import Context from './components/context/ContextComponent';
-
+import SearchBar from "./components/searchBar/SearchBar";
+import UseTaskContext from "./hooks/use-task-context";
+import Route from "./components/Route";
+import CalenadarPage from "./pages/CalendarPage";
 
 function App() {
-
-  const { fetchTasks, createTask, taskList, deleteTask, changeCompletion, showCategory, createCategory, categoryList, category, fetchCategories, deleteCategory } = useContext(Context)
-
+  const { fetchTasks, showCategory, fetchCategories } = UseTaskContext();
 
   useEffect(() => {
     fetchTasks();
-    fetchCategories()
-    showCategory('', 1)
-
+    fetchCategories();
+    showCategory("", 1);
   }, []);
- 
 
   return (
     <div className="container main__container">
-      <Menu
-        taskList={taskList}
-        categoryList={categoryList}
-        createCategory={createCategory}
-        showCategory={showCategory}
-        deleteCategory={deleteCategory}
-      />
+      <Menu />
       <div className="right__container">
+        <SearchBar />
         <GreetDate />
-        <AddTask category={category} categoryList={categoryList} createTask={createTask} />
-        <TaskList
-          deleteTask={deleteTask}
-          changeCompletion={changeCompletion}
-          taskList={taskList}
-          category={category}
-          categoryList={categoryList}
-        />
+        <AddTask />
+        <TaskList />
       </div>
+      <Route path="/calendar">
+        <CalenadarPage />
+      </Route>
     </div>
   );
 }

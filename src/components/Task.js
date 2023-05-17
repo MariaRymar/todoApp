@@ -6,15 +6,22 @@ import { ImCheckboxChecked } from "react-icons/im";
 import {TbCheckbox} from 'react-icons/tb'
 function Task({ task, changeCompletion, deleteTask, categoryList }) {
   const [complete, setComplete] = useState(task.completion);
+
+
   const handleCompletionChange = () => {
     setComplete((prev) => !prev);
     changeCompletion(task, !complete);
   };
 
+
+
+
   return (
+    <div>
+
     <div className="task">
-      <div className="task__left" onClick={handleCompletionChange}>
-        {complete ? <ImCheckboxChecked /> : <GrCheckbox />}
+      <div className="task__left">
+        {complete ? <ImCheckboxChecked  onClick={handleCompletionChange} /> : <GrCheckbox  onClick={handleCompletionChange} />}
         {task.value}
       </div>
       <div className="task__right">
@@ -27,6 +34,7 @@ function Task({ task, changeCompletion, deleteTask, categoryList }) {
 
         <FiTrash className="bin" onClick={() => deleteTask(task.id)} />
       </div>
+    </div>
     </div>
   );
 }
