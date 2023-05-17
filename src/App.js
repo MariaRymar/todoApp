@@ -9,7 +9,8 @@ import Route from "./components/Route";
 import CalenadarPage from "./pages/CalendarPage";
 
 function App() {
-  const { fetchTasks, showCategory, fetchCategories } = UseTaskContext();
+  const { fetchTasks, showCategory, fetchCategories, currentPath } =
+    UseTaskContext();
 
   useEffect(() => {
     fetchTasks();
@@ -20,12 +21,14 @@ function App() {
   return (
     <div className="container main__container">
       <Menu />
-      <div className="right__container">
-        <SearchBar />
-        <GreetDate />
-        <AddTask />
-        <TaskList />
-      </div>
+      <Route path="/">
+        <div className="right__container">
+          <SearchBar />
+          <GreetDate />
+          <AddTask />
+          <TaskList />
+        </div>
+      </Route>
       <Route path="/calendar">
         <CalenadarPage />
       </Route>

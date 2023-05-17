@@ -1,11 +1,11 @@
-import { FcCalendar } from "react-icons/fc";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 function Calendar() {
   return (
-    <div className="button__container calendar-container">
-      <div className='calendar'>
-        <FcCalendar />
-        Calenadar
-      </div>
+    <div>
+        <DatePicker />
+   
     </div>
   );
 }

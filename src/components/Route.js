@@ -1,6 +1,13 @@
+import UseTaskContext from "../hooks/use-task-context";
 
+function Route ({path, children}) {
+    const { currentPath } = UseTaskContext();
 
-function Route ({children}) {
+    if(path === currentPath) {
+        return children
+    }
+
+    return null;
 
    
 
