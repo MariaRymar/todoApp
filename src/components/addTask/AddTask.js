@@ -3,17 +3,43 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./addTask.css";
 import UseTaskContext from "../../hooks/use-task-context";
+import {addTask, changeValue, changeDetail, changeDueDate, changeCategory} from '../../store';
+import {useDispatch, useSelector} from 'react-redux'
+
 
 function AddTask() {
-  const { createTask, categoryList, category } = UseTaskContext();
+  const dispatch = useDispatch();
+  const {value, detail, dueDate, category} = useSelector((state) => {
+    return {value: state.form.value, detail: state.form.detail, dueDate: state.form.dueDate, category: state.form.category}
+  })
+
+  const changeFormValue = (e) => {
+    dispatch(changeValue(e.target.value))
+  }
+  const changeFormDetail = (e) => {
+    dispatch(changeDetail(e.target.value))
+  }
+  const changeFormCategory = (e) => {
+    dispatch(changeCategory(e.target.value))
+  }
+  const changeFormDueDate = (e) => {
+    dispatch(changeDueDate(e.target.value))
+  }
+
+  const submitForm = (e) => {
+    e.preventDefault()
+    dispatch(addTask({value, detail, dueDate}))
+  }
+
+  // const { createTask, categoryList, category } = UseTaskContext();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [inputValue, setInputValue] = useState({
-    value: "",
-    dueDate: new Date(),
-    category: category? category.label: "No List",
-    detail: "",
-  });
+  // const [inputValue, setInputValue] = useState({
+  //   value: "",
+  //   dueDate: new Date(),
+  //   category: category? category.label: "No List",
+  //   detail: "",
+  // });
 
   const clickRef = useRef(null);
 
@@ -31,31 +57,31 @@ function AddTask() {
     };
   }, []);
 
-  const submitForm = (e) => {
-    e.preventDefault();
-    if (inputValue.value && inputValue.category) {
-      createTask(inputValue);
-      setInputValue({
-        value: "",
-        dueDate: new Date(),
-        category: "",
-        detail: "",
-      });
-      setIsOpen(false);
-    } else {
-      alert("add name or category");
-    }
-  };
+  // const submitForm = (e) => {
+  //   e.preventDefault();
+  //   if (inputValue.value && inputValue.category) {
+  //     createTask(inputValue);
+  //     setInputValue({
+  //       value: "",
+  //       dueDate: new Date(),
+  //       category: "",
+  //       detail: "",
+  //     });
+  //     setIsOpen(false);
+  //   } else {
+  //     alert("add name or category");
+  //   }
+  // };
 
   return (
     <div className="addInput">
-      <form ref={clickRef} onSubmit={submitForm}>
+      <form 
+      ref={clickRef} 
+      onSubmit={submitForm}>
         <input
           className="styledInput"
-          value={inputValue.value}
-          onChange={(e) =>
-            setInputValue({ ...inputValue, value: e.target.value })
-          }
+          value={value}
+          onChange={changeFormValue}
           onClick={() => setIsOpen(true)}
           placeholder="Write a New Task..."
         ></input>
@@ -63,31 +89,27 @@ function AddTask() {
           <div className="addTaskForm">
             <input
               placeholder="Task details..."
-              value={inputValue.detail}
-              onChange={(e) =>
-                setInputValue({ ...inputValue, detail: e.target.value })
-              }
+              value={detail}
+              onChange={changeFormDetail}
             ></input>
-            <select
-              value={category? category.label: inputValue.category }
-              onChange={(e) => {
-                setInputValue({ ...inputValue, category: e.target.value });
-              }}
+             <select
+              value={
+                // category? category.label: 
+                category[0]}
+              onChange={changeFormCategory}
             >
-              {categoryList.map((formCategory) =>
+              {/* {categoryList.map((formCategory) =>
                 formCategory.value === "completed" ||
                 formCategory.value === "" ? null : (
                   <option key={formCategory.id}>{formCategory.label}</option>
                 )
-              )}
+              )} */}
             </select>
 
             <DatePicker
               className="datepicker"
-              selected={inputValue.dueDate}
-              onChange={(date) =>
-                setInputValue({ ...inputValue, dueDate: date })
-              }
+              selected={dueDate}
+              onChange={changeFormDueDate}
               showTimeSelect
               timeFormat="HH:mm"
               timeIntervals={15}
@@ -95,7 +117,7 @@ function AddTask() {
             />
             <button>Submit</button>
           </div>
-        ) : null}
+          ) :  null} 
       </form>
     </div>
   );

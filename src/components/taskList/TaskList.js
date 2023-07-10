@@ -1,4 +1,4 @@
-// import Task from "../taskDetail/Task";
+import Task from "../taskDetail/Task";
 import "./taskList.css";
 // import UseTaskContext from "../../hooks/use-task-context";
 import { useDispatch, useSelector } from "react-redux";;
@@ -51,7 +51,9 @@ function TaskList() {
   //       );
   //     }
   //   });
-  const showList = taskList.map(task => <div key={task.id}>{task.name}</div>)
+
+  const showList = taskList.map(task => <Task key={task.id} task={task} />)
+
 
   // return <div className="tasklist">{handleShowList}</div>;
   return <div className="tasklist">{showList}</div>;

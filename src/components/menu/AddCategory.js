@@ -1,8 +1,26 @@
 import { useState, useEffect, useRef } from "react";
+import { changeCategoryValue, addCategory } from "../../store";
+import { useDispatch, useSelector } from "react-redux";
 
-function AddCategory({ createCategory }) {
+function AddCategory() {
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const [newCategory, setNewCategory] = useState("");
+  // const [newCategory, setNewCategory] = useState("");
+  const {value} = useSelector((state) => {
+    return{ value: state.categoryForm.value};
+  });
+  console.log(value)
+
+  const changeFormValue = (e) => {
+    dispatch(changeCategoryValue(e.target.value))
+  }
+
+  const submitCategoryForm = (e) => {
+    e.preventDefault();
+    dispatch(addCategory({value}))
+    setIsOpen(false);
+
+  }
 
   // same / add task
 
@@ -25,16 +43,11 @@ function AddCategory({ createCategory }) {
       {isOpen ? (
         <form
           className="styledInput category"
-          onSubmit={(e) => {
-            e.preventDefault();
-            createCategory(newCategory);
-            setNewCategory("");
-            setIsOpen(false);
-          }}
+          onSubmit={submitCategoryForm}
         >
           <input
-            value={newCategory}
-            onChange={(e) => setNewCategory(e.target.value)}
+            value={value}
+            onChange={changeFormValue}
             placeholder="Category Name"
           ></input>
         </form>

@@ -1,5 +1,6 @@
 // import { useEffect } from "react";
-// import Menu from "./components/menu/Menu";
+import Menu from "./components/menu/Menu";
+import AddTask from "./components/addTask/AddTask";
 import TaskList from "./components/taskList/TaskList";
 // import AddTask from "./components/addTask/AddTask";
 // import GreetDate from "./components/GreetDate";
@@ -19,7 +20,15 @@ function App() {
 
   return (
     // <div className="container main__container">
+    <div className="container main__container">
+      <Menu />
+      <div>
+      <AddTask />
       <TaskList />
+
+      </div>
+
+    </div>
       // {/* <Menu />
       // <Route path="/">
       //   <div className="right__container">
