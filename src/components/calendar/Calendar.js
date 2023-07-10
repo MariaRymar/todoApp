@@ -1,13 +1,7 @@
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { Calendar } from "@bryntum/calendar";
 
-function Calendar() {
-  return (
-    <div>
-        <DatePicker />
-   
-    </div>
-  );
+function CalendarView() {
+  return <div />;
 }
 
-export default Calendar;
+export default CalendarView;

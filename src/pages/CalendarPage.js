@@ -1,10 +1,10 @@
-import Calendar from "../components/calendar/Calendar";
+import CalendarView from "../components/calendar/Calendar";
 import UseTaskContext from "../hooks/use-task-context";
 
 function CalenadarPage () {
   
 
-    return <Calendar />
+    return <CalendarView />
 
 }
 

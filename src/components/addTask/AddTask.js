@@ -4,17 +4,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./addTask.css";
 import UseTaskContext from "../../hooks/use-task-context";
 
-function AddTask({}) {
-  const { createTask, categoryList } = UseTaskContext();
-
+function AddTask() {
+  const { createTask, categoryList, category } = UseTaskContext();
 
   const [isOpen, setIsOpen] = useState(false);
-
   const [inputValue, setInputValue] = useState({
     value: "",
     dueDate: new Date(),
-    category: "",
-    detail: ""
+    category: category? category.label: "No List",
+    detail: "",
   });
 
   const clickRef = useRef(null);
@@ -37,7 +35,12 @@ function AddTask({}) {
     e.preventDefault();
     if (inputValue.value && inputValue.category) {
       createTask(inputValue);
-      setInputValue({ value: "", dueDate: new Date(), category: "", detail: "" });
+      setInputValue({
+        value: "",
+        dueDate: new Date(),
+        category: "",
+        detail: "",
+      });
       setIsOpen(false);
     } else {
       alert("add name or category");
@@ -58,19 +61,23 @@ function AddTask({}) {
         ></input>
         {isOpen ? (
           <div className="addTaskForm">
-            <input placeholder="Task details..." value={inputValue.detail} onChange={(e) => setInputValue({ ...inputValue, detail: e.target.value })}></input>
+            <input
+              placeholder="Task details..."
+              value={inputValue.detail}
+              onChange={(e) =>
+                setInputValue({ ...inputValue, detail: e.target.value })
+              }
+            ></input>
             <select
-   
-              value={inputValue.category}
+              value={category? category.label: inputValue.category }
               onChange={(e) => {
                 setInputValue({ ...inputValue, category: e.target.value });
               }}
             >
-   
-              {categoryList.map((category) =>
-                category.value === "completed" ||
-                category.value === "" ? null : (
-                  <option key={category.id}>{category.label}</option>
+              {categoryList.map((formCategory) =>
+                formCategory.value === "completed" ||
+                formCategory.value === "" ? null : (
+                  <option key={formCategory.id}>{formCategory.label}</option>
                 )
               )}
             </select>

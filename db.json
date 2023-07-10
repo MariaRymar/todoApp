@@ -1,25 +1,54 @@
 {
   "tasks": [
     {
-      "value": "rrrr",
-      "dueDate": "2 Jun",
-      "category": "tyre3",
+      "value": "Write essay",
+      "dueDate": "30 Jun",
+      "date": 1688130869000,
       "completion": false,
+      "category": "School",
+      "detail": "rerere",
       "id": 1
     },
     {
-      "value": "errghj",
-      "dueDate": "17 May",
-      "category": "56yhgfde",
+      "value": "Do hw",
+      "dueDate": "31 May",
+      "date": 1685538925000,
       "completion": false,
+      "category": "School",
+      "detail": "eeee",
       "id": 2
     },
     {
-      "value": "dsftgyh",
-      "dueDate": "10 May",
-      "category": "eftgrthyj",
+      "value": "Schedule meeting",
+      "dueDate": "14 Jun",
+      "date": 1686748538000,
       "completion": false,
+      "category": "Work",
+      "detail": "yty",
       "id": 3
+    },
+    {
+      "value": "Buy groceries",
+      "dueDate": "30 May",
+      "category": "Home",
+      "completion": false,
+      "id": 4
+    },
+    {
+      "value": "Clean table",
+      "dueDate": "30 May",
+      "category": "Private",
+      "completion": false,
+      "id": 5
+    },
+    {
+      "value": "fff",
+      "dueDate": "30 May",
+      "date": 1685454429000,
+      "completion": false,
+      "category": "Work",
+      "detail": "",
+      "id": 6
     }
   ],
   "categories": [
@@ -34,28 +63,28 @@
       "value": "completed"
     },
     {
-      "label": "dfg",
-      "value": "dfg",
-      "color": "yellow",
-      "id": "YRP6ovo"
+      "label": "Home",
+      "value": "Home",
+      "color": "purple",
+      "id": "CDQBhet"
     },
     {
-      "label": "eftgrthyj",
-      "value": "eftgrthyj",
-      "color": "brown",
-      "id": "1xZDjKP"
+      "label": "Work",
+      "value": "Work",
+      "color": "orange",
+      "id": "6o7GJNw"
     },
     {
-      "label": "tyre3",
-      "value": "tyre3",
-      "color": "red",
-      "id": "hQKS_w0"
+      "label": "School",
+      "value": "School",
+      "color": "orange",
+      "id": "LBUZ-bb"
     },
     {
-      "label": "56yhgfde",
-      "value": "56yhgfde",
-      "color": "blue",
-      "id": "sGgvZKv"
+      "label": "Private",
+      "value": "Private",
+      "color": "purple",
+      "id": "Wznr32Q"
     }
   ]
 }

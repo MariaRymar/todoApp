@@ -54,3 +54,12 @@
     border-color: rgba(77, 181, 255, 0.416);
 
 }
+
+.icons__container {
+    display: flex;
+    align-items: center;
+}
+
+.icons__container> div {
+
+}
