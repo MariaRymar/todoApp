@@ -6,13 +6,14 @@ import { useDispatch, useSelector } from "react-redux";;
 function TaskList() {
   // const { taskList, deleteTask, changeCompletion, categoryList, category } =
   //   UseTaskContext();
-  const taskList = useSelector((state) => {
-    return state.tasks.taskList
-
+  const {taskList, chosenCategory} = useSelector(({tasks: {taskList, searchTerm, chosenCategory}}) => {
+    
+    const filteredTasks = taskList.filter(task => !task.completion && task.category.toLowerCase() === chosenCategory).filter(task => task.value.toLowerCase().includes(searchTerm.toLowerCase()))
+    return {taskList: filteredTasks}
   })
 
   console.log(taskList)
-  console.log('sksks')
+
 
 
 
@@ -52,10 +53,8 @@ function TaskList() {
   //     }
   //   });
 
-  const showList = taskList.map(task => <Task key={task.id} task={task} />)
+  const showList = taskList.sort((a, b) => a.date - b.date).map(task => <Task key={task.id} task={task} />)
 
-
-  // return <div className="tasklist">{handleShowList}</div>;
   return <div className="tasklist">{showList}</div>;
 
 }

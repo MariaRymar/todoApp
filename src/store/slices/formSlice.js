@@ -6,8 +6,8 @@ const formSlice = createSlice({
   initialState: {
     value: "",
     detail: "",
-    category: "some categ",
-    dueDate: "",
+    category: "",
+    dueDate: new Date(),
   },
   reducers: {
     changeValue(state, action) {
@@ -27,8 +27,8 @@ const formSlice = createSlice({
     builder.addCase(addTask, (state, action) => {
       state.value = "";
       state.detail = "";
-      state.category = "some categ";
-      state.dueDate = "";
+      state.category = "";
+      state.dueDate = new Date();
     });
   },
 });

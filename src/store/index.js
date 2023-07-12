@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { tasksReducer, addTask, removeTask } from "./slices/tasksSlice";
+import { tasksReducer, addTask, removeTask,changeSearchTerm, changeComplete, changeChosenCategory} from "./slices/tasksSlice";
 import { changeValue, formReducer, changeDetail, changeDueDate, changeCategory } from "./slices/formSlice";
 import { addCategory, categoriesReducer, removeCategory } from "./slices/categoriesSlice";
 import { categoryFormReducer, changeCategoryValue} from "./slices/categoryFormSlice";
@@ -14,4 +14,4 @@ const store = configureStore({
 
 
 
-export { store, addTask, changeValue, changeDetail, changeDueDate, changeCategory, removeTask, addCategory, changeCategoryValue, removeCategory }
+export { store, addTask, changeValue, changeDetail, changeDueDate, changeCategory, removeTask, addCategory, changeCategoryValue, removeCategory, changeSearchTerm, changeComplete , changeChosenCategory}

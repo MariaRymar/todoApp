@@ -2,52 +2,67 @@ import { useState, useEffect, useRef } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./addTask.css";
-import UseTaskContext from "../../hooks/use-task-context";
-import {addTask, changeValue, changeDetail, changeDueDate, changeCategory} from '../../store';
-import {useDispatch, useSelector} from 'react-redux'
-
+import {
+  addTask,
+  changeValue,
+  changeDetail,
+  changeDueDate,
+  changeCategory,
+} from "../../store";
+import { useDispatch, useSelector } from "react-redux";
+import { GoChevronDown, GoChevronLeft } from "react-icons/go";
 
 function AddTask() {
   const dispatch = useDispatch();
-  const {value, detail, dueDate, category} = useSelector((state) => {
-    return {value: state.form.value, detail: state.form.detail, dueDate: state.form.dueDate, category: state.form.category}
-  })
+  const { value, detail, dueDate, category, categoryList } = useSelector(
+    (state) => {
+      return {
+        value: state.form.value,
+        detail: state.form.detail,
+        dueDate: state.form.dueDate,
+        category: state.form.category,
+        categoryList: state.categories.categoriesList
+      };
+    }
+  );
 
   const changeFormValue = (e) => {
-    dispatch(changeValue(e.target.value))
-  }
+    dispatch(changeValue(e.target.value));
+  };
   const changeFormDetail = (e) => {
-    dispatch(changeDetail(e.target.value))
-  }
-  const changeFormCategory = (e) => {
-    dispatch(changeCategory(e.target.value))
-  }
-  const changeFormDueDate = (e) => {
-    dispatch(changeDueDate(e.target.value))
-  }
+    dispatch(changeDetail(e.target.value));
+  };
+  const changeFormCategory = (categ) => {
+    dispatch(changeCategory(categ));
+    setVisibleSelect(false)
+
+  };
+  const changeFormDueDate = (date) => {
+    dispatch(changeDueDate(date));
+  };
 
   const submitForm = (e) => {
-    e.preventDefault()
-    dispatch(addTask({value, detail, dueDate}))
-  }
+    e.preventDefault();
+    dispatch(addTask({ value, detail, dueDate, category }));
+  };
 
-  // const { createTask, categoryList, category } = UseTaskContext();
-
+  const [visibleSelect, setVisibleSelect] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  // const [inputValue, setInputValue] = useState({
-  //   value: "",
-  //   dueDate: new Date(),
-  //   category: category? category.label: "No List",
-  //   detail: "",
-  // });
 
   const clickRef = useRef(null);
+  const selectRef = useRef(null)
 
   useEffect(() => {
     const handler = (event) => {
       if (!clickRef.current) return;
+      if(!selectRef.current) return;
+
       if (!clickRef.current.contains(event.target)) {
         setIsOpen(false);
+        
+      }
+      if(!selectRef.current.contains(event.target)) {
+        setVisibleSelect(false)
       }
     };
     document.addEventListener("click", handler, true);
@@ -57,27 +72,10 @@ function AddTask() {
     };
   }, []);
 
-  // const submitForm = (e) => {
-  //   e.preventDefault();
-  //   if (inputValue.value && inputValue.category) {
-  //     createTask(inputValue);
-  //     setInputValue({
-  //       value: "",
-  //       dueDate: new Date(),
-  //       category: "",
-  //       detail: "",
-  //     });
-  //     setIsOpen(false);
-  //   } else {
-  //     alert("add name or category");
-  //   }
-  // };
 
   return (
     <div className="addInput">
-      <form 
-      ref={clickRef} 
-      onSubmit={submitForm}>
+      <form ref={clickRef} onSubmit={submitForm}>
         <input
           className="styledInput"
           value={value}
@@ -92,19 +90,20 @@ function AddTask() {
               value={detail}
               onChange={changeFormDetail}
             ></input>
-             <select
-              value={
-                // category? category.label: 
-                category[0]}
-              onChange={changeFormCategory}
-            >
-              {/* {categoryList.map((formCategory) =>
-                formCategory.value === "completed" ||
-                formCategory.value === "" ? null : (
-                  <option key={formCategory.id}>{formCategory.label}</option>
-                )
-              )} */}
-            </select>
+
+            <div ref={selectRef} value={category}>
+              <div onClick={() => setVisibleSelect(true)}>
+                {category || 'Select...'}
+                {visibleSelect ? <GoChevronDown /> : <GoChevronLeft />}
+              </div>
+              {visibleSelect && (
+                <div>
+                  {categoryList.map((formCategory) => (
+                    <div key={formCategory.id} onClick={() => changeFormCategory(formCategory.label)}>{formCategory.label}</div>
+                  ))}
+                </div>
+              )}
+            </div>
 
             <DatePicker
               className="datepicker"
@@ -117,7 +116,7 @@ function AddTask() {
             />
             <button>Submit</button>
           </div>
-          ) :  null} 
+        ) : null}
       </form>
     </div>
   );

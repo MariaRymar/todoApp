@@ -1,24 +1,23 @@
-import UseTaskContext from "../../hooks/use-task-context";
-import { useState } from "react";
-
+import { useDispatch, useSelector } from 'react-redux';
+import {changeSearchTerm} from '../../store'
 function SearchBar() {
-  const { handleSearchTask } = UseTaskContext();
-  const [searchInput, setSearchInput] = useState("");
+  const dispatch = useDispatch();
+  const searchTerm = useSelector((state) => {
+    return state.tasks.searchTerm
+  })
 
-  const handleSearch = (e) => {
+  const handleSearchInput = (e) => {
     e.preventDefault();
-    setSearchInput(e.target.value);
-
-    handleSearchTask(searchInput);
+    dispatch(changeSearchTerm(e.target.value))
   };
 
   return (
     <div>
       <input
         type="search"
-        value={searchInput}
+        value={searchTerm}
         placeholder="Search..."
-        onChange={handleSearch}
+        onChange={handleSearchInput}
       ></input>
     </div>
   );

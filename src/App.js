@@ -3,45 +3,31 @@ import Menu from "./components/menu/Menu";
 import AddTask from "./components/addTask/AddTask";
 import TaskList from "./components/taskList/TaskList";
 // import AddTask from "./components/addTask/AddTask";
-// import GreetDate from "./components/GreetDate";
-// import SearchBar from "./components/searchBar/SearchBar";
+import GreetDate from "./components/GreetDate";
+import SearchBar from "./components/searchBar/SearchBar";
 // import UseTaskContext from "./hooks/use-task-context";
-// import Route from "./components/routing/Route";
-// import CalenadarPage from "./pages/CalendarPage";
+import Route from "./components/routing/Route";
+import CalendarPage from "./pages/CalendarPage";
+import {useState, useEffect} from 'react';
 
 function App() {
-  // const { fetchTasks, showCategory, fetchCategories } = UseTaskContext();
-
-  // useEffect(() => {
-  //   fetchTasks();
-  //   fetchCategories();
-  //   showCategory("", 1);
-  // }, []);
+ 
 
   return (
-    // <div className="container main__container">
     <div className="container main__container">
       <Menu />
-      <div>
-      <AddTask />
-      <TaskList />
-
+      {/* <Route path="/" > */}
+      <div className="right__container">
+        <SearchBar />
+        <GreetDate />
+        <AddTask />
+        <TaskList />
       </div>
-
+      {/* </Route> */}
+      {/* <Route path="/calendar" > */}
+      {/* <CalendarPage /> */}
+      {/* </Route> */}
     </div>
-      // {/* <Menu />
-      // <Route path="/">
-      //   <div className="right__container">
-      //     <SearchBar />
-      //     <GreetDate />
-      //     <AddTask />
-      //     <TaskList />
-      //   </div>
-      // </Route>
-      // <Route path="/calendar">
-      //   <CalenadarPage />
-      // </Route> */}
-    // </div>
   );
 }
 

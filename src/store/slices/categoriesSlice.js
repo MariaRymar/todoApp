@@ -13,6 +13,7 @@ const categoriesSlice = createSlice({
        state.categoriesList.push({
         value: action.payload.value,
         label: action.payload.value,
+        color: 'blue',
         id: nanoid()
       });
     },

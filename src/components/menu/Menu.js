@@ -7,7 +7,7 @@ import UseTaskContext from "../../hooks/use-task-context";
 import { FcCalendar } from "react-icons/fc";
 import Link from "../routing/Link";
 import {useSelector, useDispatch} from 'react-redux'
-import {removeCategory} from '../../store';
+import {removeCategory, changeChosenCategory} from '../../store';
 
 function Menu() {
   // const {
@@ -20,24 +20,28 @@ function Menu() {
   // } = UseTaskContext();
   const dispatch = useDispatch();
 
-  const categoryList = useSelector((state) => {
-    return state.categories.categoriesList;
+  const {categoriesList, chosenCategory, taskList} = useSelector(({categories: {categoriesList}, tasks: {chosenCategory, taskList}}) => {
+    return {categoriesList, chosenCategory, taskList}
   });
+
+  console.log(chosenCategory)
+
 
   return (
     <div className="menu__container">
       {/* <Link to="/"> */}
         <div className="menu__buttons__container">
-          {categoryList.map((mapCategory) => {
+          {categoriesList.map((mapCategory) => {
+
             return (
               <div
                 className={
-                  // category.label === mapCategory.label
-                  //   ? "button__container active"
-                    // :
+                  chosenCategory.toLowerCase() === mapCategory.label.toLowerCase()
+                    ? "button__container active"
+                    :
                      `button__container`
                 }
-                // onClick={() => showCategory(mapCategory.value, mapCategory.id)}
+                onClick={() => dispatch(changeChosenCategory(mapCategory.value))}
                 key={mapCategory.id}
               >
                 <div>
@@ -57,7 +61,7 @@ function Menu() {
                       ></FiTrash>
                     )}
                   </div>
-                  {/* <div>
+                  <div>
                     {
                       taskList.filter((task) =>
                         mapCategory.value === "completed"
@@ -68,7 +72,7 @@ function Menu() {
                             !task.completion
                       ).length
                     }
-                  </div> */}
+                  </div>
                 </div>
               </div>
             );

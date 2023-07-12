@@ -9,7 +9,7 @@ function AddCategory() {
   const {value} = useSelector((state) => {
     return{ value: state.categoryForm.value};
   });
-  console.log(value)
+
 
   const changeFormValue = (e) => {
     dispatch(changeCategoryValue(e.target.value))
