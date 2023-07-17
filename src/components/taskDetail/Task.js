@@ -4,7 +4,7 @@ import { FiTrash } from "react-icons/fi";
 import { GrCheckbox } from "react-icons/gr";
 import { ImCheckboxChecked } from "react-icons/im";
 import { TbCheckbox } from "react-icons/tb";
-import { removeTask, changeComplete } from "../../store";
+import { removeTask, changeComplete , deleteTask} from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 
 function Task({ task }) {
@@ -55,7 +55,7 @@ function Task({ task }) {
 
           <FiTrash
             className="bin"
-            onClick={() => dispatch(removeTask(task.id))}
+            onClick={() => dispatch(deleteTask(task.id))}
           />
         </div>
       </div>

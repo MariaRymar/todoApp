@@ -1,8 +1,12 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
-
+import { fetchTasks } from "../thunks/fetchTasks";
+import { addTask } from "../thunks/addTask";
+import { deleteTask } from "../thunks/deleteTask";
 const tasksSlice = createSlice({
     name: 'tasks',
     initialState: {
+        isLoading:false,
+        error: null,
         searchTerm: '',
         chosenCategory: '',
         taskList: [{id: 123, value: "Homework", completion: true, dueDate: '11 Mar', detail: 'sdwefrgfds', date: 1689199200001, category:"Home"}, {id: 124, value: "Paper", completion: false, dueDate: '12 Mar', detail: 'sdwefrgfds', date: 1689199200010, category: "Work"}]
@@ -16,33 +20,33 @@ const tasksSlice = createSlice({
 
             state.chosenCategory = action.payload
         },
-        addTask(state, action) {
-            let day = action.payload.dueDate.getDate();
-            let month = [
-              "Jan",
-              "Feb",
-              "Mar",
-              "Apr",
-              "May",
-              "Jun",
-              "Jul",
-              "Aug",
-              "Sep",
-              "Oct",
-              "Nov",
-              "Dec",
-            ][action.payload.dueDate.getMonth()];
+        // addTask(state, action) {
+        //     let day = action.payload.dueDate.getDate();
+        //     let month = [
+        //       "Jan",
+        //       "Feb",
+        //       "Mar",
+        //       "Apr",
+        //       "May",
+        //       "Jun",
+        //       "Jul",
+        //       "Aug",
+        //       "Sep",
+        //       "Oct",
+        //       "Nov",
+        //       "Dec",
+        //     ][action.payload.dueDate.getMonth()];
 
-            state.taskList.push({
-                value: action.payload.value,
-                dueDate: `${day} ${month}`,
-                date: Date.parse(action.payload.dueDate),
-                completion: false,
-                category: action.payload.category,
-                detail: action.payload.detail,
-                id: nanoid()
-            })
-        },
+        //     state.taskList.push({
+        //         value: action.payload.value,
+        //         dueDate: `${day} ${month}`,
+        //         date: Date.parse(action.payload.dueDate),
+        //         completion: false,
+        //         category: action.payload.category,
+        //         detail: action.payload.detail,
+        //         id: nanoid()
+        //     })
+        // },
         removeTask(state, action) {
            state.taskList = state.taskList.filter(task => task.id !== action.payload)
         },
@@ -55,8 +59,44 @@ const tasksSlice = createSlice({
             })
 
         }
+    },
+    extraReducers(buider) {
+        buider.addCase(fetchTasks.pending, (state, action) => {
+            state.isLoading = true
+        });
+        buider.addCase(fetchTasks.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.taskList = action.payload
+        });
+        buider.addCase(fetchTasks.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.error;
+        });
+
+        buider.addCase(addTask.pending, (state, action) => {
+            state.isLoading = true
+        });
+        buider.addCase(addTask.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.taskList.push(action.payload);
+        });
+        buider.addCase(addTask.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.error;
+        });
+        buider.addCase(deleteTask.pending, (state, action) => {
+            state.isLoading = true
+        });
+        buider.addCase(deleteTask.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.taskList = state.taskList.filter(task => task.id !==action.payload);
+        });
+        buider.addCase(deleteTask.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.error;
+        });
     }
 })
 
-export const {addTask, removeTask, changeSearchTerm, changeComplete, changeChosenCategory} = tasksSlice.actions;
+export const { removeTask, changeSearchTerm, changeComplete, changeChosenCategory} = tasksSlice.actions;
 export const tasksReducer = tasksSlice.reducer;

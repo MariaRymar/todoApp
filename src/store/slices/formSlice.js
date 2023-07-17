@@ -23,14 +23,14 @@ const formSlice = createSlice({
       state.category = action.payload;
     },
   },
-  extraReducers(builder) {
-    builder.addCase(addTask, (state, action) => {
-      state.value = "";
-      state.detail = "";
-      state.category = "";
-      state.dueDate = new Date();
-    });
-  },
+  // extraReducers(builder) {
+  //   builder.addCase(addTask, (state, action) => {
+  //     state.value = "";
+  //     state.detail = "";
+  //     state.category = "";
+  //     state.dueDate = new Date();
+  //   });
+  // },
 });
 
 export const { changeValue, changeDetail, changeDueDate, changeCategory } =

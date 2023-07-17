@@ -1,11 +1,14 @@
 import Task from "../taskDetail/Task";
 import "./taskList.css";
+import { useEffect } from "react";
 // import UseTaskContext from "../../hooks/use-task-context";
-import { useDispatch, useSelector } from "react-redux";;
+import { useDispatch, useSelector } from "react-redux";
+import {fetchTasks} from '../../store'
 
 function TaskList() {
   // const { taskList, deleteTask, changeCompletion, categoryList, category } =
   //   UseTaskContext();
+  const dispatch = useDispatch();
   const {taskList, chosenCategory} = useSelector(({tasks: {taskList, searchTerm, chosenCategory}}) => {
     
     const filteredTasks = taskList.filter(task => !task.completion && task.category.toLowerCase() === chosenCategory).filter(task => task.value.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -14,7 +17,9 @@ function TaskList() {
 
   console.log(taskList)
 
-
+useEffect(() => {
+  dispatch(fetchTasks())
+},[dispatch])
 
 
   // const handleShowList = taskList

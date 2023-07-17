@@ -1,24 +1,6 @@
 {
   "tasks": [
     {
-      "value": "Write essay",
-      "dueDate": "30 Jun",
-      "date": 1688130869000,
-      "completion": false,
-      "category": "School",
-      "detail": "rerere",
-      "id": 1
-    },
-    {
-      "value": "Do hw",
-      "dueDate": "31 May",
-      "date": 1685538925000,
-      "completion": false,
-      "category": "School",
-      "detail": "eeee",
-      "id": 2
-    },
-    {
       "value": "Schedule meeting",
       "dueDate": "14 Jun",
       "date": 1686748538000,
@@ -37,18 +19,9 @@
     {
       "value": "Clean table",
       "dueDate": "30 May",
-      "category": "Private",
+      "category": "Home",
       "completion": false,
       "id": 5
-    },
-    {
-      "value": "fff",
-      "dueDate": "30 May",
-      "date": 1685454429000,
-      "completion": false,
-      "category": "Work",
-      "detail": "",
-      "id": 6
     }
   ],
   "categories": [

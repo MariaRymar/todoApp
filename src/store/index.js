@@ -13,5 +13,7 @@ const store = configureStore({
 })
 
 
-
-export { store, addTask, changeValue, changeDetail, changeDueDate, changeCategory, removeTask, addCategory, changeCategoryValue, removeCategory, changeSearchTerm, changeComplete , changeChosenCategory}
+export * from './thunks/fetchTasks'
+export * from './thunks/addTask'
+export * from './thunks/deleteTask'
+export { store, changeValue, changeDetail, changeDueDate, changeCategory, removeTask, addCategory, changeCategoryValue, removeCategory, changeSearchTerm, changeComplete , changeChosenCategory}
