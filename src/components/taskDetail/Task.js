@@ -4,14 +4,19 @@ import { FiTrash } from "react-icons/fi";
 import { GrCheckbox } from "react-icons/gr";
 import { ImCheckboxChecked } from "react-icons/im";
 import { TbCheckbox } from "react-icons/tb";
-import { removeTask, changeComplete , deleteTask} from "../../store";
+import { removeTask, changeComplete, deleteTask } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
+import { useFetchCategoriesQuery } from "../../store";
 
 function Task({ task }) {
   const dispatch = useDispatch();
-  const categoryList = useSelector((state) => {
-    return state.categories.categoriesList;
-  });
+  // const categoryList = useSelector((state) => {
+
+  //   return state.categories.categoriesList;
+  // });
+  // console.log(categoryList)
+  const { data } = useFetchCategoriesQuery();
+
 
   const [detail, setDetail] = useState(false);
 
@@ -38,8 +43,8 @@ function Task({ task }) {
         </div>
         <div className="task__right">
           {task.dueDate}
-          {!task.completion ? (
-            categoryList.map((categ) => {
+          {data && !task.completion ? (
+            data.map((categ) => {
               if (categ.value.toLowerCase() === task.category.toLowerCase()) {
                 return (
                   <BiCheckbox

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addTask } from "../slices/tasksSlice";
+
 
 const formSlice = createSlice({
   name: "form",
@@ -7,7 +7,7 @@ const formSlice = createSlice({
     value: "",
     detail: "",
     category: "",
-    dueDate: new Date(),
+    // dueDate: new Date(),
   },
   reducers: {
     changeValue(state, action) {
@@ -28,7 +28,7 @@ const formSlice = createSlice({
   //     state.value = "";
   //     state.detail = "";
   //     state.category = "";
-  //     state.dueDate = new Date();
+  //     // state.dueDate = new Date();
   //   });
   // },
 });

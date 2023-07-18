@@ -11,20 +11,13 @@ import {
 } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 import { GoChevronDown, GoChevronLeft } from "react-icons/go";
-
+import { useFetchCategoriesQuery } from "../../store";
 function AddTask() {
   const dispatch = useDispatch();
-  const { value, detail, dueDate, category, categoryList } = useSelector(
-    (state) => {
-      return {
-        value: state.form.value,
-        detail: state.form.detail,
-        dueDate: state.form.dueDate,
-        category: state.form.category,
-        categoryList: state.categories.categoriesList
-      };
-    }
-  );
+  const { data } = useFetchCategoriesQuery();
+  const { value, detail, dueDate, category } = useSelector((state) => {
+    return state.form;
+  });
 
   const changeFormValue = (e) => {
     dispatch(changeValue(e.target.value));
@@ -34,8 +27,7 @@ function AddTask() {
   };
   const changeFormCategory = (categ) => {
     dispatch(changeCategory(categ));
-    setVisibleSelect(false)
-
+    setVisibleSelect(false);
   };
   const changeFormDueDate = (date) => {
     dispatch(changeDueDate(date));
@@ -50,19 +42,18 @@ function AddTask() {
   const [isOpen, setIsOpen] = useState(false);
 
   const clickRef = useRef(null);
-  const selectRef = useRef(null)
+  const selectRef = useRef(null);
 
   useEffect(() => {
     const handler = (event) => {
       if (!clickRef.current) return;
-      if(!selectRef.current) return;
+      if (!selectRef.current) return;
 
       if (!clickRef.current.contains(event.target)) {
         setIsOpen(false);
-        
       }
-      if(!selectRef.current.contains(event.target)) {
-        setVisibleSelect(false)
+      if (!selectRef.current.contains(event.target)) {
+        setVisibleSelect(false);
       }
     };
     document.addEventListener("click", handler, true);
@@ -71,7 +62,6 @@ function AddTask() {
       document.removeEventListener("click", handler);
     };
   }, []);
-
 
   return (
     <div className="addInput">
@@ -85,36 +75,51 @@ function AddTask() {
         ></input>
         {isOpen ? (
           <div className="addTaskForm">
-            <input
-              placeholder="Task details..."
-              value={detail}
-              onChange={changeFormDetail}
-            ></input>
+            <div className="input_container">
+              <input
+                className="small_input"
+                placeholder="Task details..."
+                value={detail}
+                onChange={changeFormDetail}
+              ></input>
+            </div>
 
-            <div ref={selectRef} value={category}>
-              <div onClick={() => setVisibleSelect(true)}>
-                {category || 'Select...'}
-                {visibleSelect ? <GoChevronDown /> : <GoChevronLeft />}
+            <div
+              ref={selectRef}
+              value={category}
+            >
+              <div className="small_input select" onClick={() => setVisibleSelect(true)}>
+                <div>{category || "Select"}</div>
+                <div>
+                  {visibleSelect ? <GoChevronDown /> : <GoChevronLeft />}
+                </div>
               </div>
               {visibleSelect && (
                 <div>
-                  {categoryList.map((formCategory) => (
-                    <div key={formCategory.id} onClick={() => changeFormCategory(formCategory.label)}>{formCategory.label}</div>
+                  {data.map((formCategory) => (
+                    <div
+                      key={formCategory.id}
+                      onClick={() => changeFormCategory(formCategory.label)}
+                    >
+                      {formCategory.label}
+                    </div>
                   ))}
                 </div>
               )}
             </div>
 
-            <DatePicker
+            {/* <DatePicker
               className="datepicker"
               selected={dueDate}
               onChange={changeFormDueDate}
               showTimeSelect
               timeFormat="HH:mm"
               timeIntervals={15}
-              dateFormat="MMMM d, yyyy h:mm aa"
-            />
-            <button>Submit</button>
+              dateFormat="MMMM d, yyyy"
+            /> */}
+            <div input_container>
+              <button>Submit</button>
+            </div>
           </div>
         ) : null}
       </form>

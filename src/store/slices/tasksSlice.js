@@ -9,7 +9,7 @@ const tasksSlice = createSlice({
         error: null,
         searchTerm: '',
         chosenCategory: '',
-        taskList: [{id: 123, value: "Homework", completion: true, dueDate: '11 Mar', detail: 'sdwefrgfds', date: 1689199200001, category:"Home"}, {id: 124, value: "Paper", completion: false, dueDate: '12 Mar', detail: 'sdwefrgfds', date: 1689199200010, category: "Work"}]
+        taskList: []
     },
     reducers: {
         changeSearchTerm(state, action) {

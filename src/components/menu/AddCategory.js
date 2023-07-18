@@ -1,11 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import { changeCategoryValue, addCategory } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
+import {useAddCategoryMutation} from '../../store';
 
 function AddCategory() {
+
+  const [addCategory, results] = useAddCategoryMutation();
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  // const [newCategory, setNewCategory] = useState("");
+
   const {value} = useSelector((state) => {
     return{ value: state.categoryForm.value};
   });
@@ -17,7 +20,8 @@ function AddCategory() {
 
   const submitCategoryForm = (e) => {
     e.preventDefault();
-    dispatch(addCategory({value}))
+    addCategory({value})
+    // dispatch(addCategory({value}))
     setIsOpen(false);
 
   }
@@ -39,6 +43,7 @@ function AddCategory() {
   }, []);
 
   return (
+  
     <div ref={clickRef}>
       {isOpen ? (
         <form

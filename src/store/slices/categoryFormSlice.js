@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addCategory } from "../slices/categoriesSlice";
+
 const categoryFormSlice = createSlice({
   name: "categoryForm",
   initialState: {
@@ -10,11 +10,11 @@ const categoryFormSlice = createSlice({
       state.value = action.payload;
     },
   },
-  extraReducers(builder) {
-      builder.addCase(addCategory, (state, action) => {
-          return {value: ''}
-      })
-  }
+  // extraReducers(builder) {
+  //     builder.addCase(addCategory, (state, action) => {
+  //         return {value: ''}
+  //     })
+  // }
 });
 
 export const { changeCategoryValue } = categoryFormSlice.actions;

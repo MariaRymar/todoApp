@@ -1,4 +1,19 @@
+.small_input {
+    display: flex;
+    height: 30px;
+    width: 10rem;
+    border-radius: 1.5rem;
+    padding-left: 10px;
+    background-color: rgb(249, 250, 255);
+    border: 1px solid ;
+    border-color: rgb(211, 235, 255);
+}
 
+.input_container {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
 .addInput {
     margin-bottom: 2rem;
 }
@@ -12,16 +27,25 @@
 }
 .addTaskForm {
     display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    
 }
 
 .addInput form button {
-    background-color: var(--color-primary-variant);
+    background-color: rgb(56, 61, 85);
     transition: var(--transition);
-
     color: white;
+    height: 30px;
+    width: 5rem;
 }
 
 .addInput form button:hover {
     font-size: 0.9rem;
     transition: var(--transition);
+}
+
+.select {
+    justify-content:space-evenly;
+    align-items:center;
 }

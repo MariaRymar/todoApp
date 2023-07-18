@@ -12,16 +12,31 @@
     {
       "value": "Buy groceries",
       "dueDate": "30 May",
+      "date": 1686748538000,
       "category": "Home",
       "completion": false,
       "id": 4
     },
     {
-      "value": "Clean table",
-      "dueDate": "30 May",
-      "category": "Home",
+      "value": "f",
       "completion": false,
-      "id": 5
+      "category": "",
+      "detail": "f",
+      "id": 6
+    },
+    {
+      "value": "Hsuuw",
+      "completion": false,
+      "category": "Hjsj",
+      "detail": "hsnsw",
+      "id": 7
+    },
+    {
+      "value": "fghf",
+      "completion": false,
+      "category": "Show All",
+      "detail": "fdgfhgg",
+      "id": 8
     }
   ],
   "categories": [
@@ -29,11 +44,6 @@
       "id": "1",
       "label": "Show All",
       "value": ""
-    },
-    {
-      "id": "2",
-      "label": "Completed",
-      "value": "completed"
     },
     {
       "label": "Home",
@@ -48,16 +58,9 @@
       "id": "6o7GJNw"
     },
     {
-      "label": "School",
-      "value": "School",
-      "color": "orange",
-      "id": "LBUZ-bb"
-    },
-    {
-      "label": "Private",
-      "value": "Private",
-      "color": "purple",
-      "id": "Wznr32Q"
+      "value": "Hjsj",
+      "label": "Hjsj",
+      "id": "6H22zsn"
     }
   ]
 }
