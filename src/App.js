@@ -1,18 +1,13 @@
-// import { useEffect } from "react";
 import Menu from "./components/menu/Menu";
 import AddTask from "./components/addTask/AddTask";
 import TaskList from "./components/taskList/TaskList";
-// import AddTask from "./components/addTask/AddTask";
 import GreetDate from "./components/GreetDate";
 import SearchBar from "./components/searchBar/SearchBar";
-// import UseTaskContext from "./hooks/use-task-context";
 import Route from "./components/routing/Route";
 import CalendarPage from "./pages/CalendarPage";
-import {useState, useEffect} from 'react';
 
 function App() {
- 
-
+  
   return (
     <div className="container main__container">
       <Menu />

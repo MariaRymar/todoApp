@@ -3,33 +3,38 @@
     height: 30px;
     width: 10rem;
     border-radius: 1.5rem;
-    padding-left: 10px;
     background-color: rgb(249, 250, 255);
-    border: 1px solid ;
+    border: 1px solid;
     border-color: rgb(211, 235, 255);
+    padding: 16px;
 }
 
 .input_container {
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
 }
+
 .addInput {
     margin-bottom: 2rem;
 }
 
-.addInput form select,.addInput form button,.datepicker   {
+.addInput form select,
+.addInput form button,
+.datepicker {
     height: fit-content;
     border-radius: 2rem;
     padding: 0.6rem;
     cursor: pointer;
-   
+
 }
+
 .addTaskForm {
+    margin-top: 0.5rem;
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
-    
+    justify-content: space-between;
+
 }
 
 .addInput form button {
@@ -46,6 +51,28 @@
 }
 
 .select {
-    justify-content:space-evenly;
-    align-items:center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 165px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    border-radius: 1rem;
+}
+
+.dropdown-item:hover {
+    background-color: var(--color-bg);
+    border-radius: 1rem;
+    cursor: pointer;
+
 }

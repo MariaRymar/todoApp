@@ -1,32 +1,57 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BiCheckbox } from "react-icons/bi";
 import { FiTrash } from "react-icons/fi";
 import { GrCheckbox } from "react-icons/gr";
 import { ImCheckboxChecked } from "react-icons/im";
 import { TbCheckbox } from "react-icons/tb";
-import { removeTask, changeComplete, deleteTask } from "../../store";
-import { useDispatch, useSelector } from "react-redux";
+import { deleteTask, changeComplete } from "../../store";
+import { useDispatch } from "react-redux";
 import { useFetchCategoriesQuery } from "../../store";
 
 function Task({ task }) {
   const dispatch = useDispatch();
-  // const categoryList = useSelector((state) => {
-
-  //   return state.categories.categoriesList;
-  // });
-  // console.log(categoryList)
   const { data } = useFetchCategoriesQuery();
-
 
   const [detail, setDetail] = useState(false);
 
   const handleCompletionChange = () => {
-    dispatch(changeComplete(task.id));
+    dispatch(changeComplete(task));
   };
 
   const showDetail = () => {
     setDetail(!detail);
   };
+  useEffect(() => {
+    const closeDetailOnClickOutside = (event) => {
+      if (!event.target.closest(".task__left")) {
+        setDetail(false);
+      }
+    };
+
+    document.addEventListener("click", closeDetailOnClickOutside);
+    return () => {
+      document.removeEventListener("click", closeDetailOnClickOutside);
+    };
+  }, []);
+
+  const dueDate = new Date(task.dueDate);
+  let day = dueDate.getDate();
+
+  let month = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ][dueDate.getMonth()];
+  let time = dueDate.getHours() + ":" + dueDate.getMinutes();
 
   return (
     <div>
@@ -42,14 +67,16 @@ function Task({ task }) {
           </div>
         </div>
         <div className="task__right">
-          {task.dueDate}
+          {day} {month}
           {data && !task.completion ? (
-            data.map((categ) => {
-              if (categ.value.toLowerCase() === task.category.toLowerCase()) {
+            data.map((category) => {
+              if (
+                category.value.toLowerCase() === task.category.toLowerCase()
+              ) {
                 return (
                   <BiCheckbox
-                    key={categ.id}
-                    style={{ color: `${categ.color}` }}
+                    key={category.id}
+                    style={{ color: `${category.color}` }}
                   />
                 );
               }
@@ -57,14 +84,18 @@ function Task({ task }) {
           ) : (
             <TbCheckbox style={{ color: `green` }} />
           )}
-
           <FiTrash
             className="bin"
             onClick={() => dispatch(deleteTask(task.id))}
           />
         </div>
       </div>
-      {detail && <div>{task.detail}</div>}
+      {detail && (
+        <div className="dropdown-content">
+          {task.detail}
+          <div>complete until : {time}</div>
+        </div>
+      )}
     </div>
   );
 }

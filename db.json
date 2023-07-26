@@ -1,41 +1,29 @@
 {
   "tasks": [
     {
-      "value": "Schedule meeting",
-      "dueDate": "14 Jun",
-      "date": 1686748538000,
-      "completion": false,
-      "category": "Work",
-      "detail": "yty",
-      "id": 3
-    },
-    {
-      "value": "Buy groceries",
-      "dueDate": "30 May",
-      "date": 1686748538000,
-      "category": "Home",
-      "completion": false,
-      "id": 4
-    },
-    {
       "value": "f",
+      "dueDate": "2023-07-11T12:23:07.000Z",
       "completion": false,
-      "category": "",
+      "category": "fgrht",
       "detail": "f",
-      "id": 6
+      "id": 1
     },
     {
-      "value": "Hsuuw",
+      "value": "hhhh",
+      "dueDate": "2023-07-06T12:47:53.000Z",
+      "date": 1688647673000,
       "completion": false,
-      "category": "Hjsj",
-      "detail": "hsnsw",
+      "category": "dfgh",
+      "detail": "hhhhh",
       "id": 7
     },
     {
-      "value": "fghf",
+      "value": "f",
+      "dueDate": "2023-07-26T12:45:00.028Z",
+      "date": 1690375500028,
       "completion": false,
-      "category": "Show All",
-      "detail": "fdgfhgg",
+      "category": "dfgh",
+      "detail": "f",
       "id": 8
     }
   ],
@@ -46,21 +34,34 @@
       "value": ""
     },
     {
-      "label": "Home",
-      "value": "Home",
-      "color": "purple",
-      "id": "CDQBhet"
+      "value": "fgrht",
+      "label": "fgrht",
+      "id": "_BWR6zY"
     },
     {
-      "label": "Work",
-      "value": "Work",
-      "color": "orange",
-      "id": "6o7GJNw"
+      "value": "dfgh",
+      "label": "dfgh",
+      "id": "NHDoLmt"
     },
     {
-      "value": "Hjsj",
-      "label": "Hjsj",
-      "id": "6H22zsn"
+      "value": "xcvbnm",
+      "label": "xcvbnm",
+      "id": "nUbA8lg"
+    },
+    {
+      "value": "ngfds",
+      "label": "ngfds",
+      "id": "__-1_t3"
+    },
+    {
+      "value": "ergfvrt",
+      "label": "ergfvrt",
+      "id": "sq6nI7a"
+    },
+    {
+      "value": "lk;",
+      "label": "lk;",
+      "id": "_mnpXU5"
     }
   ]
 }

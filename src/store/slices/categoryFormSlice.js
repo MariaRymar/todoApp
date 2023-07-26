@@ -9,13 +9,12 @@ const categoryFormSlice = createSlice({
     changeCategoryValue(state, action) {
       state.value = action.payload;
     },
-  },
-  // extraReducers(builder) {
-  //     builder.addCase(addCategory, (state, action) => {
-  //         return {value: ''}
-  //     })
-  // }
+    resetForm(state) {
+      state.value = "";
+    },
+  }
+  
 });
 
-export const { changeCategoryValue } = categoryFormSlice.actions;
+export const { changeCategoryValue, resetForm } = categoryFormSlice.actions;
 export const categoryFormReducer = categoryFormSlice.reducer;

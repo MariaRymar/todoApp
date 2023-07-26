@@ -30,7 +30,7 @@ function AddTask() {
     setVisibleSelect(false);
   };
   const changeFormDueDate = (date) => {
-    dispatch(changeDueDate(date));
+    dispatch(changeDueDate(date.toISOString()));
   };
 
   const submitForm = (e) => {
@@ -84,20 +84,21 @@ function AddTask() {
               ></input>
             </div>
 
-            <div
-              ref={selectRef}
-              value={category}
-            >
-              <div className="small_input select" onClick={() => setVisibleSelect(true)}>
+            <div ref={selectRef} value={category} className="dropdown">
+              <div
+                className="small_input select"
+                onClick={() => setVisibleSelect(true)}
+              >
                 <div>{category || "Select"}</div>
                 <div>
                   {visibleSelect ? <GoChevronDown /> : <GoChevronLeft />}
                 </div>
               </div>
               {visibleSelect && (
-                <div>
+                <div className="dropdown-content">
                   {data.map((formCategory) => (
                     <div
+                      className="dropdown-item"
                       key={formCategory.id}
                       onClick={() => changeFormCategory(formCategory.label)}
                     >
@@ -108,16 +109,16 @@ function AddTask() {
               )}
             </div>
 
-            {/* <DatePicker
+            <DatePicker
               className="datepicker"
-              selected={dueDate}
+              selected={dueDate ? new Date(dueDate) : new Date()}
               onChange={changeFormDueDate}
               showTimeSelect
               timeFormat="HH:mm"
               timeIntervals={15}
-              dateFormat="MMMM d, yyyy"
-            /> */}
-            <div input_container>
+              dateFormat="MMMM d, yyyy h:mm aa"
+            />
+            <div>
               <button>Submit</button>
             </div>
           </div>

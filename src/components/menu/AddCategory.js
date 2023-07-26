@@ -1,30 +1,27 @@
 import { useState, useEffect, useRef } from "react";
-import { changeCategoryValue, addCategory } from "../../store";
+import { changeCategoryValue, resetForm } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
-import {useAddCategoryMutation} from '../../store';
+import { useAddCategoryMutation } from "../../store";
 
 function AddCategory() {
-
   const [addCategory, results] = useAddCategoryMutation();
+
   const dispatch = useDispatch();
-  const [isOpen, setIsOpen] = useState(false);
 
-  const {value} = useSelector((state) => {
-    return{ value: state.categoryForm.value};
+  const { value } = useSelector((state) => {
+    return { value: state.categoryForm.value };
   });
-
+  console.log(results);
 
   const changeFormValue = (e) => {
-    dispatch(changeCategoryValue(e.target.value))
-  }
+    dispatch(changeCategoryValue(e.target.value));
+  };
 
   const submitCategoryForm = (e) => {
     e.preventDefault();
-    addCategory({value})
-    // dispatch(addCategory({value}))
-    setIsOpen(false);
-
-  }
+    addCategory({ value });
+    dispatch(resetForm());
+  };
 
   // same / add task
 
@@ -33,7 +30,6 @@ function AddCategory() {
     const handler = (event) => {
       if (!clickRef.current) return;
       if (!clickRef.current.contains(event.target)) {
-        setIsOpen(false);
       }
     };
     document.addEventListener("click", handler, true);
@@ -43,27 +39,15 @@ function AddCategory() {
   }, []);
 
   return (
-  
     <div ref={clickRef}>
-      {isOpen ? (
-        <form
+      <form ref={clickRef} onSubmit={submitCategoryForm}>
+        <input
           className="styledInput category"
-          onSubmit={submitCategoryForm}
-        >
-          <input
-            value={value}
-            onChange={changeFormValue}
-            placeholder="Category Name"
-          ></input>
-        </form>
-      ) : (
-        <div
-          className="styledInput category"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          + Create New Category
-        </div>
-      )}
+          value={value}
+          onChange={changeFormValue}
+          placeholder="+ Add Category"
+        ></input>
+      </form>
     </div>
   );
 }

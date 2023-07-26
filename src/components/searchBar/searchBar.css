@@ -17,7 +17,7 @@
    
 }
 
-.search:hover {
+.search:hover, .search:focus {
     border-color: transparent;
     box-shadow: 1px 1px rgb(216, 237, 255), 0.02em 0 .4em #bbe1ff;
     font-size: 0.82rem;

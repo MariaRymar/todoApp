@@ -51,4 +51,3 @@ export const {
   useDeleteCategoryMutation,
 } = categoriesApi;
 export { categoriesApi };
-
