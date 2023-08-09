@@ -1,8 +1,8 @@
-// import { createContext, useState, useEffect, useReducer } from "react";
+import { createContext, useState, useEffect, useReducer } from "react";
 // import axios from "axios";
 // import { addTask } from "../store";
 // import {useDispatch} from 'react-redux'
-// const Context = createContext();
+const Context = createContext();
 
 // const FETCH_TASKS = 'fetch-tasks'
 // const reducer = (state, action) => {
@@ -16,13 +16,13 @@
 //   }
 
 // }
-// function ContextProvider({ children }) {
+function ContextProvider({ children }) {
 //   const dispatch = useDispatch();
 //   // const [taskList, setNewTaskList] = useState([]);
 //   const [searchingList, setSearchingList] = useState([]);
 //   const [categoryList, setCategoryList] = useState([]);
 //   const [category, setCategory] = useState("");
-//   const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
 //   // const [state, dispatch] = useReducer(reducer, {
 //   //   taskList: [],
@@ -31,19 +31,19 @@
 
 //   // NAVIGATION
 
-//   useEffect(() => {
-//     const handler = () => {
-//       setCurrentPath(window.location.pathname);
-//     };
+  useEffect(() => {
+    const handler = () => {
+      setCurrentPath(window.location.pathname);
+    };
 
-//     window.addEventListener("popstate", handler);
-//     return window.removeEventListener("popstate", handler);
-//   }, []);
+    window.addEventListener("popstate", handler);
+    return window.removeEventListener("popstate", handler);
+  }, []);
 
-//   const navigate = (to) => {
-//     window.history.pushState({}, "", to);
-//     setCurrentPath(to);
-//   };
+  const navigate = (to) => {
+    window.history.pushState({}, "", to);
+    setCurrentPath(to);
+  };
 
 //   // FETCH TASKS
 
@@ -198,9 +198,9 @@
 //   // };
 
 
-//   return (
-//     <Context.Provider
-//       value={{
+  return (
+    <Context.Provider
+      value={{
 //         // fetchTasks,
 //         // createTask,
 //         // taskList,
@@ -212,15 +212,15 @@
 //         // category,
 //         // fetchCategories,
 //         // deleteCategory,
-//         navigate,
-//         currentPath,
+        navigate,
+        currentPath,
 //         // handleSearchTask,
-//       }}
-//     >
-//       {children}
-//     </Context.Provider>
-//   );
-// }
+      }}
+    >
+      {children}
+    </Context.Provider>
+  );
+}
 
-// export { ContextProvider };
-// export default Context;
+export { ContextProvider };
+export default Context;

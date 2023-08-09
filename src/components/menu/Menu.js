@@ -6,7 +6,7 @@ import { FiTrash } from "react-icons/fi";
 import { FcCalendar } from "react-icons/fc";
 import Link from "../routing/Link";
 import { useSelector, useDispatch } from "react-redux";
-import { changeChosenCategory } from "../../store";
+import { changeChosenCategory, deleteTasksByCategory } from "../../store";
 import {
   useFetchCategoriesQuery,
   useDeleteCategoryMutation,
@@ -24,9 +24,11 @@ function Menu() {
     return state.tasks;
   });
 
-  const handleDeleteCategory = (id, event) => {
+  const handleDeleteCategory = (category, event) => {
     event.stopPropagation();
-    deleteCategory(id);
+    deleteCategory(category.id).unwrap().then(() => {
+      dispatch(deleteTasksByCategory(category));
+    });
   };
 
   let content;
@@ -43,7 +45,7 @@ function Menu() {
               <div
                 className={
                   chosenCategory.toLowerCase() ===
-                  mapCategory.label.toLowerCase()
+                  mapCategory.value.toLowerCase()
                     ? "button__container active"
                     : `button__container`
                 }
@@ -52,6 +54,7 @@ function Menu() {
                 }
                 key={mapCategory.id}
               >
+    
                 <div>
                   {mapCategory.value === "completed" ? (
                     <TbCheckbox />
@@ -66,7 +69,7 @@ function Menu() {
                     mapCategory.value === "" ? null : (
                       <FiTrash
                         onClick={(event) =>
-                          handleDeleteCategory(mapCategory.id, event)
+                          handleDeleteCategory(mapCategory, event)
                         }
                       ></FiTrash>
                     )}
@@ -93,18 +96,20 @@ function Menu() {
 
   return (
     <div className="menu__container">
-      {/* <Link to="/"> */}
+      <Link to="/">
       {content}
-      {/* </Link> */}
+      </Link>
       <AddCategory />
-      {/* <Link to="/calendar">
+      <Link to="/calendar">
       <div className="button__container calendar-container">
         <div className="calendar">
           <FcCalendar />
           Calendar
         </div>
       </div>
-    </Link> */}
+    </Link>
+
+
     </div>
   );
 }

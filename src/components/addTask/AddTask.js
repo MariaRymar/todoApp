@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import TextareaAutosize from "react-textarea-autosize";
 import "./addTask.css";
 import {
   addTask,
@@ -19,6 +20,9 @@ function AddTask() {
     return state.form;
   });
 
+  const [visibleSelect, setVisibleSelect] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
   const changeFormValue = (e) => {
     dispatch(changeValue(e.target.value));
   };
@@ -35,11 +39,11 @@ function AddTask() {
 
   const submitForm = (e) => {
     e.preventDefault();
-    dispatch(addTask({ value, detail, dueDate, category }));
+    dispatch(
+      addTask({ value, detail, dueDate: dueDate || new Date(), category })
+    );
+    setIsOpen(false);
   };
-
-  const [visibleSelect, setVisibleSelect] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
 
   const clickRef = useRef(null);
   const selectRef = useRef(null);
@@ -72,37 +76,50 @@ function AddTask() {
           onChange={changeFormValue}
           onClick={() => setIsOpen(true)}
           placeholder="Write a New Task..."
+          required
         ></input>
         {isOpen ? (
           <div className="addTaskForm">
             <div className="input_container">
-              <input
+              <TextareaAutosize
                 className="small_input"
                 placeholder="Task details..."
                 value={detail}
                 onChange={changeFormDetail}
-              ></input>
+              ></TextareaAutosize>
             </div>
 
             <div ref={selectRef} value={category} className="dropdown">
               <div
+                tabIndex="0"
+                autoFocus
                 className="small_input select"
+                onFocus={() => setVisibleSelect(true)}
                 onClick={() => setVisibleSelect(true)}
               >
-                <div>{category || "Select"}</div>
+                <div >{category || "Select"}</div>
                 <div>
                   {visibleSelect ? <GoChevronDown /> : <GoChevronLeft />}
                 </div>
               </div>
               {visibleSelect && (
-                <div className="dropdown-content">
+                <div  className="dropdown-content">
                   {data.map((formCategory) => (
                     <div
+                    tabIndex="0"
                       className="dropdown-item"
                       key={formCategory.id}
                       onClick={() => changeFormCategory(formCategory.label)}
+                      onKeyUp={(e) => {
+                        if(e.key === 'Enter') {
+                          changeFormCategory(formCategory.label)
+                        }
+                      }}
                     >
-                      {formCategory.label}
+                      {formCategory.value !== "" &&
+                      formCategory.value !== "completed"
+                        ? formCategory.label
+                        : null}
                     </div>
                   ))}
                 </div>
@@ -110,7 +127,8 @@ function AddTask() {
             </div>
 
             <DatePicker
-              className="datepicker"
+              className="datepicker small_input"
+       
               selected={dueDate ? new Date(dueDate) : new Date()}
               onChange={changeFormDueDate}
               showTimeSelect

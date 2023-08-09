@@ -1,5 +1,6 @@
 import UseTaskContext from "../../hooks/use-task-context";
-function Link({ to, children}) {
+
+function Link({ to, children }) {
   const { navigate } = UseTaskContext();
 
   const handleClick = (e) => {

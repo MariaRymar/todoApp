@@ -1,67 +1,104 @@
 {
   "tasks": [
     {
-      "value": "f",
-      "dueDate": "2023-07-11T12:23:07.000Z",
-      "completion": false,
-      "category": "fgrht",
-      "detail": "f",
+      "value": "rtry",
+      "dueDate": "2023-08-01T11:49:59.000Z",
+      "date": 1690890599000,
+      "completion": true,
+      "category": "fghrgrfe",
+      "detail": "rgfew",
       "id": 1
     },
     {
-      "value": "hhhh",
-      "dueDate": "2023-07-06T12:47:53.000Z",
-      "date": 1688647673000,
+      "value": "scdfgh",
+      "dueDate": "2023-07-31T11:53:32.795Z",
+      "date": 1690804412000,
       "completion": false,
-      "category": "dfgh",
-      "detail": "hhhhh",
+      "category": "n,kjl;",
+      "detail": "",
+      "id": 2
+    },
+    {
+      "value": "fdgerwrfg",
+      "dueDate": "2023-08-01T12:26:20.000Z",
+      "date": 1690892780000,
+      "completion": true,
+      "category": "fg",
+      "detail": "fdg",
+      "id": 3
+    },
+    {
+      "value": "fgbfg",
+      "dueDate": "2023-08-05T12:34:33.000Z",
+      "date": 1691238873000,
+      "completion": true,
+      "category": "frggfed",
+      "detail": "fff",
+      "id": 4
+    },
+    {
+      "value": "efrgt",
+      "dueDate": "2023-06-25T12:37:02.000Z",
+      "date": 1687696622000,
+      "completion": false,
+      "category": "efgrytuyiuukyutr",
+      "detail": "f",
+      "id": 5
+    },
+    {
+      "value": "fgfd",
+      "dueDate": "2023-07-31T12:38:23.787Z",
+      "date": 1690807103000,
+      "completion": false,
+      "category": "cdvfb",
+      "detail": "dfgfd",
+      "id": 6
+    },
+    {
+      "value": " nm",
+      "dueDate": "2023-08-10T16:04:23.000Z",
+      "date": 1691683463000,
+      "completion": false,
+      "category": "defrgthyj",
+      "detail": "m,",
       "id": 7
     },
     {
-      "value": "f",
-      "dueDate": "2023-07-26T12:45:00.028Z",
-      "date": 1690375500028,
+      "value": "dfg",
+      "dueDate": "2023-08-17T18:12:30.000Z",
+      "date": 1692295950000,
       "completion": false,
-      "category": "dfgh",
-      "detail": "f",
+      "category": "sdfgh",
+      "detail": "hgfdwert",
       "id": 8
+    },
+    {
+      "value": "iiii",
+      "dueDate": "2023-08-18T05:15:00.000Z",
+      "date": 1692335700000,
+      "completion": false,
+      "category": "sdfgh",
+      "detail": "iiii",
+      "id": 9
     }
   ],
   "categories": [
     {
       "id": "1",
-      "label": "Show All",
+      "label": "All Tasks",
       "value": ""
     },
     {
-      "value": "fgrht",
-      "label": "fgrht",
-      "id": "_BWR6zY"
+      "value": "completed",
+      "label": "Completed",
+      "color": "#0E7633",
+      "id": "82h_SXe"
     },
     {
-      "value": "dfgh",
-      "label": "dfgh",
-      "id": "NHDoLmt"
-    },
-    {
-      "value": "xcvbnm",
-      "label": "xcvbnm",
-      "id": "nUbA8lg"
-    },
-    {
-      "value": "ngfds",
-      "label": "ngfds",
-      "id": "__-1_t3"
-    },
-    {
-      "value": "ergfvrt",
-      "label": "ergfvrt",
-      "id": "sq6nI7a"
-    },
-    {
-      "value": "lk;",
-      "label": "lk;",
-      "id": "_mnpXU5"
+      "value": "sdfgh",
+      "label": "sdfgh",
+      "color": "#7A162D",
+      "id": "2o_dCjE"
     }
   ]
 }

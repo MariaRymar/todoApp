@@ -25,6 +25,7 @@ const categoriesApi = createApi({
             body: {
               value: category.value,
               label: category.value,
+              color: category.color
             },
           };
         },

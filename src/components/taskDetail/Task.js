@@ -7,24 +7,27 @@ import { TbCheckbox } from "react-icons/tb";
 import { deleteTask, changeComplete } from "../../store";
 import { useDispatch } from "react-redux";
 import { useFetchCategoriesQuery } from "../../store";
-
+import "./task.css";
 function Task({ task }) {
   const dispatch = useDispatch();
   const { data } = useFetchCategoriesQuery();
 
   const [detail, setDetail] = useState(false);
+  const [detailOpenTaskId, setDetailOpenTaskId] = useState(null);
 
   const handleCompletionChange = () => {
     dispatch(changeComplete(task));
   };
 
   const showDetail = () => {
-    setDetail(!detail);
+    // setDetail(!detail);
+    setDetailOpenTaskId((prevTaskId) => (prevTaskId === task.id ? null : task.id));
   };
   useEffect(() => {
     const closeDetailOnClickOutside = (event) => {
       if (!event.target.closest(".task__left")) {
-        setDetail(false);
+        // setDetail(false);
+        setDetailOpenTaskId(null);
       }
     };
 
@@ -51,7 +54,11 @@ function Task({ task }) {
     "Nov",
     "Dec",
   ][dueDate.getMonth()];
-  let time = dueDate.getHours() + ":" + dueDate.getMinutes();
+  let time =
+    dueDate.getHours().toString().padStart(2, "0") +
+    ":" +
+    dueDate.getMinutes().toString().padStart(2, "0");
+
 
   return (
     <div>
@@ -62,12 +69,27 @@ function Task({ task }) {
           ) : (
             <GrCheckbox onClick={handleCompletionChange} />
           )}
-          <div style={{ cursor: "pointer" }} onClick={showDetail}>
+          <div
+            style={{
+              textDecoration: task.completion ? "line-through" : "",
+              cursor: "pointer",
+            }}
+            onClick={showDetail}
+          >
             {task.value}
           </div>
         </div>
         <div className="task__right">
-          {day} {month}
+          <div
+            style={{
+              color:
+                !task.completion && task.date < Date.parse(new Date())
+                  ? "rgb(220, 100, 100)"
+                  : "",
+            }}
+          >
+            {day} {month}
+          </div>
           {data && !task.completion ? (
             data.map((category) => {
               if (
@@ -90,9 +112,10 @@ function Task({ task }) {
           />
         </div>
       </div>
-      {detail && (
+      { detailOpenTaskId === task.id  && (
         <div className="dropdown-content">
           {task.detail}
+          <div>category : {task.category ? task.category : "-"}</div>
           <div>complete until : {time}</div>
         </div>
       )}

@@ -27,13 +27,14 @@ function GreetDate() {
   const currentHour = currentDate.getHours();
 
   let greeting;
+  
 
   if (currentHour >= 5 && currentHour < 12) {
-    greeting = "Good morning";
+    greeting = "Good morning ☀️";
   } else if (currentHour >= 12 && currentHour < 18) {
-    greeting = "Good afternoon";
+    greeting = "Good afternoon 🌤";
   } else {
-    greeting = "Good evening";
+    greeting = "Good evening 🌚";
   }
 
   return (

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { changeCategoryValue, resetForm } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 import { useAddCategoryMutation } from "../../store";
@@ -11,7 +11,6 @@ function AddCategory() {
   const { value } = useSelector((state) => {
     return { value: state.categoryForm.value };
   });
-  console.log(results);
 
   const changeFormValue = (e) => {
     dispatch(changeCategoryValue(e.target.value));
@@ -19,9 +18,18 @@ function AddCategory() {
 
   const submitCategoryForm = (e) => {
     e.preventDefault();
-    addCategory({ value });
+    addCategory({ value, color: getRandomColor() });
     dispatch(resetForm());
   };
+
+  function getRandomColor() {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
 
   // same / add task
 

@@ -4,24 +4,23 @@ import TaskList from "./components/taskList/TaskList";
 import GreetDate from "./components/GreetDate";
 import SearchBar from "./components/searchBar/SearchBar";
 import Route from "./components/routing/Route";
-import CalendarPage from "./pages/CalendarPage";
+import CalendarView from "./components/calendar/Calendar";
 
 function App() {
-  
   return (
     <div className="container main__container">
       <Menu />
-      {/* <Route path="/" > */}
-      <div className="right__container">
-        <SearchBar />
-        <GreetDate />
-        <AddTask />
-        <TaskList />
-      </div>
-      {/* </Route> */}
-      {/* <Route path="/calendar" > */}
-      {/* <CalendarPage /> */}
-      {/* </Route> */}
+      <Route path="/">
+        <div className="right__container">
+          <SearchBar />
+          <GreetDate />
+          <AddTask />
+          <TaskList />
+        </div>
+      </Route>
+      <Route path="/calendar">
+        <CalendarView />
+      </Route>
     </div>
   );
 }

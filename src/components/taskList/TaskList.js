@@ -13,10 +13,23 @@ function TaskList() {
   const { taskList } = useSelector(
     ({ tasks: { taskList, searchTerm, chosenCategory } }) => {
       const filteredTasks = taskList.filter((task) => {
-        if (chosenCategory) {
+        if (
+          chosenCategory &&
+          chosenCategory !== "completed" &&
+          chosenCategory !== ""
+        ) {
           return (
             !task.completion &&
             task.category.toLowerCase() === chosenCategory.toLowerCase() &&
+            task.value.toLowerCase().includes(searchTerm.toLowerCase())
+          );
+        } else if (
+          chosenCategory &&
+          chosenCategory === "completed" &&
+          chosenCategory !== ""
+        ) {
+          return (
+            task.completion &&
             task.value.toLowerCase().includes(searchTerm.toLowerCase())
           );
         }
@@ -42,7 +55,11 @@ function TaskList() {
     content = <div>Error fetching tasks</div>;
   } else {
     content = taskList
-      .sort((a, b) => a.date - b.date)
+      .sort((a, b) => {
+        if (a.completion && !b.completion) return 1;
+        if (!a.completion && b.completion) return -1;
+        return a.date - b.date;
+      })
       .map((task) => <Task key={task.id} task={task} />);
   }
 
