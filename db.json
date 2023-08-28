@@ -35,33 +35,6 @@
       "category": "Home",
       "detail": "...",
       "id": 5
-    },
-    {
-      "value": "fenwgjklr;i3oe'wds",
-      "dueDate": "2023-08-24T11:30:00.000Z",
-      "date": 1692876600000,
-      "completion": true,
-      "category": "School",
-      "detail": "",
-      "id": 7
-    },
-    {
-      "value": "rgkertwr",
-      "dueDate": "2023-08-25T12:15:00.000Z",
-      "date": 1692965700000,
-      "completion": true,
-      "category": "Work",
-      "detail": "rfegmkl/;",
-      "id": 8
-    },
-    {
-      "value": "m",
-      "dueDate": "2023-08-28T15:25:06.403Z",
-      "date": 1693236306000,
-      "completion": true,
-      "category": "",
-      "detail": "",
-      "id": 10
     }
   ],
   "categories": [
@@ -93,12 +66,6 @@
       "label": "School",
       "color": "#20AD1B",
       "id": "chUHol5"
-    },
-    {
-      "value": ",",
-      "label": ",",
-      "color": "#2E8E09",
-      "id": "5C0GqUb"
     }
   ]
 }

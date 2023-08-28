@@ -26,8 +26,6 @@ function Menu() {
     return state.tasks;
   });
   const { currentPath } = UseTaskContext();
-  
-  console.log(chosenCategory)
 
 
   const handleDeleteCategory = (category, event) => {
@@ -43,6 +41,7 @@ function Menu() {
   } else {
     content = (
       <div className="menu__buttons__container">
+        {currentPath}
         {data &&
           data.map((mapCategory) => {
             return (

@@ -6,11 +6,12 @@ import SearchBar from "./components/searchBar/SearchBar";
 import Route from "./components/routing/Route";
 import MenuBar from "./components/menu/MenuBar";
 import CalendarView from "./components/calendar/Calendar";
+
 function App() {
   return (
     <div className="container main__container">
       <Menu />
-      <Route path="todoApp/">
+      <Route path="/">
         <div className="right__container">
           <div className='container-lg'>
             <SearchBar />
@@ -21,7 +22,7 @@ function App() {
           <MenuBar />
         </div>
       </Route>
-      <Route path="todoApp/calendar">
+      <Route path="/calendar">
         <CalendarView />
       </Route>
     </div>
