@@ -1,52 +1,10 @@
 import Task from "../taskDetail/Task";
 import "./taskList.css";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchTasks } from "../../store";
 import Skeleton from "../Skeleton";
+import UseTaskContext from "../../hooks/use-task-context";
 
 function TaskList() {
-  const dispatch = useDispatch();
-  const [isLoadingTasks, setIsLoadingTasks] = useState(false);
-  const [loadingTasksError, setLoadingTasksError] = useState(null);
-
-  const { taskList } = useSelector(
-    ({ tasks: { taskList, searchTerm, chosenCategory } }) => {
-      const filteredTasks = taskList.filter((task) => {
-        if (
-          chosenCategory &&
-          chosenCategory !== "completed" &&
-          chosenCategory !== ""
-        ) {
-          return (
-            !task.completion &&
-            task.category.toLowerCase() === chosenCategory.toLowerCase() &&
-            task.value.toLowerCase().includes(searchTerm.toLowerCase())
-          );
-        } else if (
-          chosenCategory &&
-          chosenCategory === "completed" &&
-          chosenCategory !== ""
-        ) {
-          return (
-            task.completion &&
-            task.value.toLowerCase().includes(searchTerm.toLowerCase())
-          );
-        }
-        return task.value.toLowerCase().includes(searchTerm.toLowerCase());
-      });
-
-      return { taskList: filteredTasks };
-    }
-  );
-
-  useEffect(() => {
-    setIsLoadingTasks(true);
-    dispatch(fetchTasks())
-      .unwrap()
-      .catch((e) => setLoadingTasksError(e))
-      .finally(() => setIsLoadingTasks(false));
-  }, [dispatch]);
+  const { isLoadingTasks, loadingTasksError, taskList } = UseTaskContext();
 
   let content;
   if (isLoadingTasks) {

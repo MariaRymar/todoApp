@@ -26,6 +26,7 @@
 
 html {
     scroll-behavior: smooth;
+    font-size: 10px;
 }
 
 ::-webkit-scrollbar {
@@ -40,60 +41,172 @@ body {
 }
 
 .container {
-    width: var(--container-width-lg);
+    /* width: var(--container-width-lg); */
     margin: 0 auto;
 
 }
 
- h2, h3, h4, h5 {
+h2,
+h3,
+h4,
+h5 {
     font-weight: 500;
+    font-size: 2.1rem;
     color: var(--color-primary-variant)
 }
 
-h1{
-    font-size: 2.5rem;
+h1 {
+    font-size: 4rem;
     font-weight: 500;
 
 }
 
 .main__container {
-  
     display: grid;
-    grid-template-columns: 35% 50%;
-    gap: 15%;
-    margin: 3rem 2rem;
-
+    grid-template-columns: 29% 45%;
+    gap: 14%;
+    margin: 4.8rem 11rem;
 }
 
 .right__container {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.vp-btn{
+    display: none;
+}
+
+.menu-bar {
+    display: none;
 }
 
 
+@media screen and (max-width: 1500px) {
+    .main__container {
 
-
-@media screen and (max-width: 1024px) {
-    .container {
-        width: var(--container-width-md);
+        grid-template-columns: 33% 48%;
+        gap: 15%;
+        margin: 3rem 5rem;
     }
 
 
 }
 
-@media screen and (max-width: 600px) {
-    .container {
-        width: var(--container-width-ms);
+@media screen and (max-width: 1200px) {
+    .main__container {
+
+        grid-template-columns: 36% 46%;
+        gap: 15%;
+        margin: 3rem 5rem;
     }
+
 
 }
 
-/* task */
+@media screen and (max-width: 1100px) {
+    .main__container {
+
+        grid-template-columns: 42% 50%;
+        gap: 8%;
+        margin: 2rem 5rem;
+    }
+    .menu__container {
+     height: 80vh;
+    }
+
+
+
+
+}
+
+@media screen and (max-width: 900px) {
+    .main__container {
+        display: block;
+    }
+    .menu__container {
+        display: none;
+    }
+
+    /* .vp-btn {
+        align-self: flex-end;
+        display: block;
+        width: 10rem;
+        height: 3rem;
+        font-size: 1.5rem;
+        border-radius: 2rem;
+        background-color:#fff;
+        border: 1px solid var(--color-primary-variant)
+    } */
+    .menu-bar {
+        position: fixed;
+        align-items: center;
+        bottom: 0;
+        height: 5rem;
+        display: flex;
+        /* width: 100%; */
+        width: 70%;
+        background-color:rgb(77, 181, 255);
+        border-radius: 2rem;
+        align-self: center;
+        justify-content: space-around;
+        align-items:center;
+    }
+
+    .menu-bar div a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 5px;
+    }
+
+    .tasklist {
+        margin-top: 7rem !important;
+    }
+
+    .addInput {
+        margin-top: 5rem;
+    }
+
+    .right__container {
+        height: 100vh;
+        justify-content: space-between;
+    }
+    .container-lg {
+        /* margin-top: 7rem; */
+
+    }
+
+
+}
+
+@media screen and (max-width: 550px) { 
+    .container-lg {
+        margin-top: 0;
+
+    }
+
+    .tasklist {
+        margin-top: 1rem !important;
+    }
+
+    .addInput {
+        margin-top: 1rem;
+    } 
+    .task__right div {
+        display: none;
+    }
+
+  
+}
+
+/* TASK DETAIL */
 .task {
     display: flex;
     justify-content: space-between;
-    padding: 1.5rem 2rem;
-    font-size: 1rem;
-    border-radius: 2rem;
+    padding: 2.5rem 3.2rem;
+    font-size: 1.6rem;
+    border-radius: 2.4rem;
     width: 100%;
     background-color: var(--color-bg);
     border: 1px solid transparent;
@@ -101,39 +214,39 @@ h1{
 }
 
 .task:hover {
-    background-color:var(--color-bg);
+    background-color: var(--color-bg);
     transition: var(--transition);
     border-color: var(--color-primary-variant);
-    /* cursor: pointer; */
-    cursor:default;
-    font-size: 1.01rem;
+    cursor: default;
+    font-size: 1.6rem;
 }
 
-.task__left, .task__right {
+.task__left,
+.task__right {
     display: flex;
-    gap: 1rem;
-    align-items:center;
+    gap: 1.6rem;
+    align-items: center;
 }
 
-.task__left >svg {
+.task__left>svg {
     color: rgb(77, 181, 255);
-    font-size: 1rem;
+    font-size: 1.6rem;
     border-radius: 5px;
     cursor: pointer;
 }
 
 
-.styledInput{
-    padding: 1rem;
-    font-size: 1rem;
-    border-radius: 2rem;
+.styledInput {
+    padding: 1.6rem;
+    font-size: 1.6rem;
+    border-radius: 2.4rem;
     width: 100%;
     background-color: var(--color-bg);
     border: 1px solid transparent;
     transition: var(--transition);
     border-color: var(--color-primary-variant);
 
-   
+
 }
 
 .styledInput:hover {
@@ -141,10 +254,11 @@ h1{
     transition: var(--transition);
     border-color: var(--color-primary-variant); */
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1.7rem;
 }
+
 .category {
-    margin-top: 1rem;
+    margin-top: 1.6rem;
 
 }
 
@@ -152,9 +266,9 @@ h1{
     background-color: transparent;
     /* height: 100%;
     width: 100%; */
-    font-size: 1rem;
-    
-    
+    font-size: 1.6rem;
+
+
 }
 
 .bin {
@@ -163,61 +277,57 @@ h1{
 }
 
 
+.bin:hover {
+    color: rgb(220, 100, 100);
+}
+
+
 .button__container {
     display: flex;
     justify-content: space-between;
     background-color: #eae7e779;
-    border-radius: 25px;
-    padding: 1.7rem;
+    border-radius: 2.5rem;
+    padding: 2.4rem;
     align-items: center;
     transition: var(--transition);
-    border: 1px solid transparent;
-    
-}
+    border: .1rem solid transparent;
 
-.calendar-container {
-    margin-top: 2.5rem;
 }
-
-.calendar {
-    display: flex;
-    align-items: center;
-}
-
 
 
 /* CALENDAR */
 
-.index-route {
-  width: 100%;
-  max-width: 1100px;
-  margin: 2em auto;
+.calendar-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 5rem auto;
+    font-size: 1.3rem;
 }
-  
 
-  /* Skeleton */
 
-  @keyframes shimmer {
-      100% {
+/* SKELETON */
+
+@keyframes shimmer {
+    100% {
         transform: translateX(100%)
-      }
-    
-  }
-  .outer-skeleton {
+    }
+
+}
+
+.outer-skeleton {
     position: relative;
     overflow: hidden;
     background-color: rgb(229 231 235);
-    border-radius: 2rem;
+    border-radius: 3.2rem;
     margin-bottom: 0.625rem;
-    height: 4rem;
+    height: 6.5rem;
     width: 100%;
-  }
+}
 
-  .inner-skeleton {
+.inner-skeleton {
     animation: shimmer 1.5s infinite;
     position: absolute;
     inset: 0;
-    background-image: linear-gradient(to right,rgb(229 231 235), white,rgb(229 231 235) );
-  }
-
+    background-image: linear-gradient(to right, rgb(229 231 235), white, rgb(229 231 235));
+}
 

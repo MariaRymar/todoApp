@@ -31,8 +31,6 @@ function AddCategory() {
     return color;
   }
 
-  // same / add task
-
   const clickRef = useRef(null);
   useEffect(() => {
     const handler = (event) => {

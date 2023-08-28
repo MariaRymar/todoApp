@@ -1,84 +1,66 @@
 {
   "tasks": [
     {
-      "value": "rtry",
-      "dueDate": "2023-08-01T11:49:59.000Z",
-      "date": 1690890599000,
-      "completion": true,
-      "category": "fghrgrfe",
-      "detail": "rgfew",
+      "value": "Schedule a meeting",
+      "dueDate": "2023-08-14T06:30:00.000Z",
+      "date": 1691994600000,
+      "completion": false,
+      "category": "Work",
+      "detail": "with colleagues ",
       "id": 1
     },
     {
-      "value": "scdfgh",
-      "dueDate": "2023-07-31T11:53:32.795Z",
-      "date": 1690804412000,
-      "completion": false,
-      "category": "n,kjl;",
-      "detail": "",
+      "value": "Write an essay",
+      "dueDate": "2023-08-17T09:15:00.000Z",
+      "date": 1692263700000,
+      "completion": true,
+      "category": "School",
+      "detail": "for english class",
       "id": 2
     },
     {
-      "value": "fdgerwrfg",
-      "dueDate": "2023-08-01T12:26:20.000Z",
-      "date": 1690892780000,
-      "completion": true,
-      "category": "fg",
-      "detail": "fdg",
-      "id": 3
-    },
-    {
-      "value": "fgbfg",
-      "dueDate": "2023-08-05T12:34:33.000Z",
-      "date": 1691238873000,
-      "completion": true,
-      "category": "frggfed",
-      "detail": "fff",
+      "value": "Buy groceries",
+      "dueDate": "2023-08-16T17:00:00.000Z",
+      "date": 1692205200000,
+      "completion": false,
+      "category": "Home",
+      "detail": "for dinner",
       "id": 4
     },
     {
-      "value": "efrgt",
-      "dueDate": "2023-06-25T12:37:02.000Z",
-      "date": 1687696622000,
-      "completion": false,
-      "category": "efgrytuyiuukyutr",
-      "detail": "f",
+      "value": "Make an appointment",
+      "dueDate": "2023-08-19T16:15:00.000Z",
+      "date": 1692461700000,
+      "completion": true,
+      "category": "Home",
+      "detail": "...",
       "id": 5
     },
     {
-      "value": "fgfd",
-      "dueDate": "2023-07-31T12:38:23.787Z",
-      "date": 1690807103000,
-      "completion": false,
-      "category": "cdvfb",
-      "detail": "dfgfd",
-      "id": 6
-    },
-    {
-      "value": " nm",
-      "dueDate": "2023-08-10T16:04:23.000Z",
-      "date": 1691683463000,
-      "completion": false,
-      "category": "defrgthyj",
-      "detail": "m,",
+      "value": "fenwgjklr;i3oe'wds",
+      "dueDate": "2023-08-24T11:30:00.000Z",
+      "date": 1692876600000,
+      "completion": true,
+      "category": "School",
+      "detail": "",
       "id": 7
     },
     {
-      "value": "dfg",
-      "dueDate": "2023-08-17T18:12:30.000Z",
-      "date": 1692295950000,
-      "completion": false,
-      "category": "sdfgh",
-      "detail": "hgfdwert",
+      "value": "rgkertwr",
+      "dueDate": "2023-08-25T12:15:00.000Z",
+      "date": 1692965700000,
+      "completion": true,
+      "category": "Work",
+      "detail": "rfegmkl/;",
       "id": 8
     },
     {
-      "value": "iiii",
-      "dueDate": "2023-08-18T05:15:00.000Z",
-      "date": 1692335700000,
-      "completion": false,
-      "category": "sdfgh",
-      "detail": "iiii",
+      "value": "fdgfde",
+      "dueDate": "2023-08-17T12:30:00.000Z",
+      "date": 1692275400000,
+      "completion": true,
+      "category": "Work",
+      "detail": "fd,mnj.ehj///bs,hgrn:KF\"HDpsa;vkbj/sMC",
       "id": 9
     }
   ],
@@ -95,10 +77,22 @@
       "id": "82h_SXe"
     },
     {
-      "value": "sdfgh",
-      "label": "sdfgh",
-      "color": "#7A162D",
-      "id": "2o_dCjE"
+      "value": "Home",
+      "label": "Home",
+      "color": "#6993EC",
+      "id": "WIjrHoq"
+    },
+    {
+      "value": "Work",
+      "label": "Work",
+      "color": "#B3F2F1",
+      "id": "G_AME-o"
+    },
+    {
+      "value": "School",
+      "label": "School",
+      "color": "#20AD1B",
+      "id": "chUHol5"
     }
   ]
 }

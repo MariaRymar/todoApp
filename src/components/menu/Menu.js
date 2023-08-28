@@ -6,12 +6,14 @@ import { FiTrash } from "react-icons/fi";
 import { FcCalendar } from "react-icons/fc";
 import Link from "../routing/Link";
 import { useSelector, useDispatch } from "react-redux";
-import { changeChosenCategory, deleteTasksByCategory } from "../../store";
+import { changeChosenCategory } from "../../store";
 import {
   useFetchCategoriesQuery,
   useDeleteCategoryMutation,
 } from "../../store";
 import Skeleton from "../Skeleton";
+import UseTaskContext from "../../hooks/use-task-context";
+
 
 function Menu() {
   const { data, error, isLoading } = useFetchCategoriesQuery();
@@ -23,12 +25,11 @@ function Menu() {
   const { chosenCategory, taskList } = useSelector((state) => {
     return state.tasks;
   });
+  const { currentPath } = UseTaskContext();
 
   const handleDeleteCategory = (category, event) => {
     event.stopPropagation();
-    deleteCategory(category.id).unwrap().then(() => {
-      dispatch(deleteTasksByCategory(category));
-    });
+    deleteCategory(category.id)
   };
 
   let content;
@@ -44,6 +45,7 @@ function Menu() {
             return (
               <div
                 className={
+                  currentPath=== '/'&&
                   chosenCategory.toLowerCase() ===
                   mapCategory.value.toLowerCase()
                     ? "button__container active"
@@ -68,6 +70,7 @@ function Menu() {
                     {mapCategory.value === "completed" ||
                     mapCategory.value === "" ? null : (
                       <FiTrash
+                      className='bin'
                         onClick={(event) =>
                           handleDeleteCategory(mapCategory, event)
                         }
@@ -101,7 +104,7 @@ function Menu() {
       </Link>
       <AddCategory />
       <Link to="/calendar">
-      <div className="button__container calendar-container">
+      <div className={`button__container calendar-container ${currentPath==='/calendar' ? 'active' : ''}`}>
         <div className="calendar">
           <FcCalendar />
           Calendar

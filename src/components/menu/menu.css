@@ -1,13 +1,13 @@
 .menu__container {
-    margin-top: 1.75rem;
+    margin-top: 5rem;
     background-color: var(--color-white);
-    border-radius: 20px;
+    border-radius: 2rem;
     width: 100%;
-    min-height: 70vh;
-    height: fit-content;
-    padding: 2rem 2rem;
-    box-shadow: 20px 20px 60px #d5d5d5,
+    min-height: 60vh;
+    padding: 3.2rem 3.2rem;
+    box-shadow: 2rem 2rem 6rem #d5d5d5,
     -20px -20px 60px #ebebeb;
+    font-size: 1.5rem;
 
 
 }
@@ -15,7 +15,7 @@
 .menu__buttons__container {
     display: flex;
     flex-direction: column;
-    row-gap: 3px;
+    row-gap: .3rem;
 }
 
 /* .button__container {
@@ -38,7 +38,7 @@
 
 .button__container div {
     display: flex;
-    column-gap: 0.7rem;
+    column-gap: 1.2rem;
 }
 .button__container div>svg {
     color: green;
@@ -46,7 +46,7 @@
 .menu__buttons__container div button {
     border: none;
     background-color: transparent;
-    font-size: 1rem;
+    font-size: 1.5rem;
 
 }
 
@@ -59,8 +59,4 @@
 .icons__container {
     display: flex;
     align-items: center;
-}
-
-.icons__container> div {
-
 }

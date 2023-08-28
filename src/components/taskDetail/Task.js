@@ -20,13 +20,11 @@ function Task({ task }) {
   };
 
   const showDetail = () => {
-    // setDetail(!detail);
     setDetailOpenTaskId((prevTaskId) => (prevTaskId === task.id ? null : task.id));
   };
   useEffect(() => {
     const closeDetailOnClickOutside = (event) => {
       if (!event.target.closest(".task__left")) {
-        // setDetail(false);
         setDetailOpenTaskId(null);
       }
     };

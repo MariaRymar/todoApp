@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import TextareaAutosize from "react-textarea-autosize";
 import "./addTask.css";
 import {
   addTask,
@@ -27,6 +26,8 @@ function AddTask() {
     dispatch(changeValue(e.target.value));
   };
   const changeFormDetail = (e) => {
+    e.target.style.height = 'auto';
+    e.target.style.height = `${e.target.scrollHeight}px`;
     dispatch(changeDetail(e.target.value));
   };
   const changeFormCategory = (categ) => {
@@ -80,13 +81,14 @@ function AddTask() {
         ></input>
         {isOpen ? (
           <div className="addTaskForm">
-            <div className="input_container">
-              <TextareaAutosize
-                className="small_input"
+            <div className='wrap'>
+              <textarea
+                type="text"
+                className="small_input detail-input"
                 placeholder="Task details..."
                 value={detail}
                 onChange={changeFormDetail}
-              ></TextareaAutosize>
+              ></textarea>         
             </div>
 
             <div ref={selectRef} value={category} className="dropdown">
@@ -97,22 +99,22 @@ function AddTask() {
                 onFocus={() => setVisibleSelect(true)}
                 onClick={() => setVisibleSelect(true)}
               >
-                <div >{category || "Select"}</div>
+                <div>{category || "Select"}</div>
                 <div>
                   {visibleSelect ? <GoChevronDown /> : <GoChevronLeft />}
                 </div>
               </div>
               {visibleSelect && (
-                <div  className="dropdown-content">
+                <div className="dropdown-content">
                   {data.map((formCategory) => (
                     <div
-                    tabIndex="0"
+                      tabIndex="0"
                       className="dropdown-item"
                       key={formCategory.id}
                       onClick={() => changeFormCategory(formCategory.label)}
                       onKeyUp={(e) => {
-                        if(e.key === 'Enter') {
-                          changeFormCategory(formCategory.label)
+                        if (e.key === "Enter") {
+                          changeFormCategory(formCategory.label);
                         }
                       }}
                     >
@@ -126,18 +128,20 @@ function AddTask() {
               )}
             </div>
 
-            <DatePicker
-              className="datepicker small_input"
-       
-              selected={dueDate ? new Date(dueDate) : new Date()}
-              onChange={changeFormDueDate}
-              showTimeSelect
-              timeFormat="HH:mm"
-              timeIntervals={15}
-              dateFormat="MMMM d, yyyy h:mm aa"
-            />
             <div>
-              <button>Submit</button>
+              <DatePicker
+                className="datepicker small_input"
+                selected={dueDate ? new Date(dueDate) : new Date()}
+                onChange={changeFormDueDate}
+                showTimeSelect
+                timeFormat="HH:mm"
+                timeIntervals={15}
+                dateFormat="MMMM d, yyyy h:mm aa"
+              />
+            </div>
+
+            <div>
+              <button className="small_input">Submit</button>
             </div>
           </div>
         ) : null}

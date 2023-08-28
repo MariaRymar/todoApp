@@ -79,19 +79,6 @@ const tasksSlice = createSlice({
       state.error = action.error;
     });
     
-    builder.addCase(deleteTasksByCategory.pending, (state, action) => {
-      state.isLoading = true;
-    });
-    builder.addCase(deleteTasksByCategory.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.taskList = state.taskList.filter((task) => task.category !== action.payload.value)
-    });
-    builder.addCase(deleteTasksByCategory.rejected, (state, action) => {
-      state.isLoading = false;
-      state.error = action.error;
-    });
-
-  
 
   },
 });
