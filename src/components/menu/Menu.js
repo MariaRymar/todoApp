@@ -26,6 +26,9 @@ function Menu() {
     return state.tasks;
   });
   const { currentPath } = UseTaskContext();
+  
+  console.log(chosenCategory)
+
 
   const handleDeleteCategory = (category, event) => {
     event.stopPropagation();
@@ -104,7 +107,7 @@ function Menu() {
       </Link>
       <AddCategory />
       <Link to="/calendar">
-      <div className={`button__container calendar-container ${currentPath==='/calendar' ? 'active' : ''}`}>
+      <div onClick={() =>  dispatch(changeChosenCategory(''))} className={`button__container calendar-container ${currentPath==='/calendar' ? 'active' : ''}`}>
         <div className="calendar">
           <FcCalendar />
           Calendar

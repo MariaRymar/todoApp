@@ -25,6 +25,7 @@ function ContextProvider({ children }) {
 //   const [categoryList, setCategoryList] = useState([]);
 //   const [category, setCategory] = useState("");
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  
 
 
   // TASKLIST

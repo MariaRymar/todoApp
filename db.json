@@ -55,13 +55,13 @@
       "id": 8
     },
     {
-      "value": "fdgfde",
-      "dueDate": "2023-08-17T12:30:00.000Z",
-      "date": 1692275400000,
+      "value": "m",
+      "dueDate": "2023-08-28T15:25:06.403Z",
+      "date": 1693236306000,
       "completion": true,
-      "category": "Work",
-      "detail": "fd,mnj.ehj///bs,hgrn:KF\"HDpsa;vkbj/sMC",
-      "id": 9
+      "category": "",
+      "detail": "",
+      "id": 10
     }
   ],
   "categories": [
@@ -93,6 +93,12 @@
       "label": "School",
       "color": "#20AD1B",
       "id": "chUHol5"
+    },
+    {
+      "value": ",",
+      "label": ",",
+      "color": "#2E8E09",
+      "id": "5C0GqUb"
     }
   ]
 }

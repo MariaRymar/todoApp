@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="container main__container">
       <Menu />
-      <Route path="/">
+      <Route path="todoApp/">
         <div className="right__container">
           <div className='container-lg'>
             <SearchBar />
@@ -21,7 +21,7 @@ function App() {
           <MenuBar />
         </div>
       </Route>
-      <Route path="/calendar">
+      <Route path="todoApp/calendar">
         <CalendarView />
       </Route>
     </div>
