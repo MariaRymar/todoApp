@@ -4,7 +4,7 @@ import { fetchTasks } from "../store";
 
 const Context = createContext();
 
-function ContextProvider({ children }) {
+function ContextProvider({ children, basename }) {
 
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
@@ -66,7 +66,7 @@ function ContextProvider({ children }) {
   }, []);
 
   const navigate = (to) => {
-    window.history.pushState({}, "", to);
+    window.history.pushState({}, "", basename + to);
     setCurrentPath(to);
   };
 

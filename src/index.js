@@ -9,7 +9,7 @@ import { ContextProvider } from "./context/ContextComponent";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <ContextProvider>
+    <ContextProvider basename="/todoApp">
       <App />
     </ContextProvider>
   </Provider>
