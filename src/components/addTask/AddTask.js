@@ -12,7 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { GoChevronDown, GoChevronLeft } from "react-icons/go";
 import { useFetchCategoriesQuery } from "../../store";
-function AddTask({calendarDate}) {
+function AddTask({ calendarDate }) {
   const dispatch = useDispatch();
   const { data } = useFetchCategoriesQuery();
   const { value, detail, dueDate, category } = useSelector((state) => {
@@ -26,9 +26,9 @@ function AddTask({calendarDate}) {
     dispatch(changeValue(e.target.value));
   };
   const changeFormDetail = (e) => {
-    e.target.style.height = 'auto';
-    console.log(e.target.scrollHeight)
-    e.target.style.height = `${e.target.scrollHeight-5}px`;
+    e.target.style.height = "auto";
+    console.log(e.target.scrollHeight);
+    e.target.style.height = `${e.target.scrollHeight - 5}px`;
     dispatch(changeDetail(e.target.value));
   };
   const changeFormCategory = (categ) => {
@@ -42,7 +42,12 @@ function AddTask({calendarDate}) {
   const submitForm = (e) => {
     e.preventDefault();
     dispatch(
-      addTask({ value, detail, dueDate: dueDate || calendarDate || new Date(), category })
+      addTask({
+        value,
+        detail,
+        dueDate: dueDate || calendarDate || new Date(),
+        category,
+      })
     );
     setIsOpen(false);
   };
@@ -80,18 +85,17 @@ function AddTask({calendarDate}) {
           placeholder="Write a New Task..."
           required
         ></input>
-        {isOpen || calendarDate ?(
+        {isOpen || calendarDate ? (
           <div className="addTaskForm">
-            <div className='wrap'>
+            <div className="wrap">
               <textarea
                 type="text"
                 className="small_input detail-input"
                 placeholder="Details..."
                 value={detail}
                 onChange={changeFormDetail}
-              ></textarea>         
+              ></textarea>
             </div>
-
 
             <div ref={selectRef} value={category} className="dropdown">
               <div
@@ -130,12 +134,16 @@ function AddTask({calendarDate}) {
               )}
             </div>
 
-    
-
             <div>
               <DatePicker
                 className="datepicker small_input"
-                selected={calendarDate? new Date(calendarDate) : dueDate ? new Date(dueDate)  : new Date()}
+                selected={
+                  calendarDate
+                    ? new Date(calendarDate)
+                    : dueDate
+                    ? new Date(dueDate)
+                    : new Date()
+                }
                 onChange={changeFormDueDate}
                 showTimeSelect
                 timeFormat="HH:mm"

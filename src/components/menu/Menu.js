@@ -83,7 +83,7 @@ function Menu() {
                       taskList.filter((task) =>
                         mapCategory.value === "completed"
                           ? task.completion === true
-                          : mapCategory.value === "" && !task.completion
+                          : mapCategory.value === ""
                           ? task
                           : task.category === mapCategory.label &&
                             !task.completion
