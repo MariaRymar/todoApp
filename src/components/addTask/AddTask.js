@@ -12,7 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { GoChevronDown, GoChevronLeft } from "react-icons/go";
 import { useFetchCategoriesQuery } from "../../store";
-function AddTask() {
+function AddTask({calendarDate}) {
   const dispatch = useDispatch();
   const { data } = useFetchCategoriesQuery();
   const { value, detail, dueDate, category } = useSelector((state) => {
@@ -27,7 +27,8 @@ function AddTask() {
   };
   const changeFormDetail = (e) => {
     e.target.style.height = 'auto';
-    e.target.style.height = `${e.target.scrollHeight}px`;
+    console.log(e.target.scrollHeight)
+    e.target.style.height = `${e.target.scrollHeight-5}px`;
     dispatch(changeDetail(e.target.value));
   };
   const changeFormCategory = (categ) => {
@@ -41,7 +42,7 @@ function AddTask() {
   const submitForm = (e) => {
     e.preventDefault();
     dispatch(
-      addTask({ value, detail, dueDate: dueDate || new Date(), category })
+      addTask({ value, detail, dueDate: dueDate || calendarDate || new Date(), category })
     );
     setIsOpen(false);
   };
@@ -79,17 +80,18 @@ function AddTask() {
           placeholder="Write a New Task..."
           required
         ></input>
-        {isOpen ? (
+        {isOpen || calendarDate ?(
           <div className="addTaskForm">
             <div className='wrap'>
               <textarea
                 type="text"
                 className="small_input detail-input"
-                placeholder="Task details..."
+                placeholder="Details..."
                 value={detail}
                 onChange={changeFormDetail}
               ></textarea>         
             </div>
+
 
             <div ref={selectRef} value={category} className="dropdown">
               <div
@@ -128,10 +130,12 @@ function AddTask() {
               )}
             </div>
 
+    
+
             <div>
               <DatePicker
                 className="datepicker small_input"
-                selected={dueDate ? new Date(dueDate) : new Date()}
+                selected={calendarDate? new Date(calendarDate) : dueDate ? new Date(dueDate)  : new Date()}
                 onChange={changeFormDueDate}
                 showTimeSelect
                 timeFormat="HH:mm"

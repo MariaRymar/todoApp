@@ -3,7 +3,12 @@
     border-radius: 2rem;
     padding: 1.5rem;
     background-color: #fff;
-    z-index: 1;
+    z-index: 2;
+    border: 1px solid rgb(206, 237, 255);
 
+}
+
+.calendar-container {
+    z-index: 1;
 }
 

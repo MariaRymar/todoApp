@@ -41,7 +41,6 @@ function Menu() {
   } else {
     content = (
       <div className="menu__buttons__container">
-        {currentPath}
         {data &&
           data.map((mapCategory) => {
             return (

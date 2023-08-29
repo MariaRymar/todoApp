@@ -111,9 +111,7 @@ h1 {
         gap: 8%;
         margin: 2rem 5rem;
     }
-    .menu__container {
-     height: 80vh;
-    }
+  
 
 
 
@@ -200,6 +198,19 @@ h1 {
   
 }
 
+
+@media screen and (max-width: 450px) {
+    html {
+        font-size: 8px;
+    }
+ }
+
+
+ @media screen and (max-width: 350px) {
+    h1, h2 {
+        font-size: 3rem;
+    }
+ }
 /* TASK DETAIL */
 .task {
     display: flex;

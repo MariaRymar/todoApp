@@ -13,7 +13,7 @@ function App() {
       <Menu />
       <Route path="/">
         <div className="right__container">
-          <div className='container-lg'>
+          <div className="container-lg">
             <SearchBar />
             <GreetDate />
             <AddTask />

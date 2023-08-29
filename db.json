@@ -1,15 +1,6 @@
 {
   "tasks": [
     {
-      "value": "Schedule a meeting",
-      "dueDate": "2023-08-14T06:30:00.000Z",
-      "date": 1691994600000,
-      "completion": false,
-      "category": "Work",
-      "detail": "with colleagues ",
-      "id": 1
-    },
-    {
       "value": "Write an essay",
       "dueDate": "2023-08-17T09:15:00.000Z",
       "date": 1692263700000,
@@ -17,15 +8,6 @@
       "category": "School",
       "detail": "for english class",
       "id": 2
-    },
-    {
-      "value": "Buy groceries",
-      "dueDate": "2023-08-16T17:00:00.000Z",
-      "date": 1692205200000,
-      "completion": false,
-      "category": "Home",
-      "detail": "for dinner",
-      "id": 4
     },
     {
       "value": "Make an appointment",
