@@ -5,8 +5,12 @@ import { fetchTasks } from "../store";
 const Context = createContext();
 
 function ContextProvider({ children, basename }) {
+  let path = window.location.pathname;
+  if (path.startsWith(basename)) {
+    path = path.slice(basename.length);
+  }
 
-  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  const [currentPath, setCurrentPath] = useState(path);
 
   // TASKLIST
 
