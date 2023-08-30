@@ -3,7 +3,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const categoriesApi = createApi({
   reducerPath: "categories",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://my-json-server.typicode.com/MariaRymar/db",
+    // baseUrl: "https://my-json-server.typicode.com/MariaRymar/db"
+    baseUrl: "https://positive-subsequent-sandal.glitch.me"
   }),
   endpoints(buider) {
     return {
