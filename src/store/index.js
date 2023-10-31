@@ -36,7 +36,8 @@ export * from "./thunks/fetchTasks";
 export * from "./thunks/addTask";
 export * from "./thunks/deleteTask";
 export * from "./thunks/changeComplete";
-export * from './thunks/deleteTasksByCategory'
+export * from './thunks/editTask'
+
 export {
   useFetchCategoriesQuery,
   useAddCategoryMutation,

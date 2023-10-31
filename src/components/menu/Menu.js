@@ -15,7 +15,9 @@ import Skeleton from "../Skeleton";
 import UseTaskContext from "../../hooks/use-task-context";
 
 
-function Menu() {
+function Menu({
+  // data, error, isLoading, deleteCategory, chosenCategory, taskList
+}) {
   const { data, error, isLoading } = useFetchCategoriesQuery();
 
   const [deleteCategory, results] = useDeleteCategoryMutation();
@@ -35,7 +37,7 @@ function Menu() {
 
   let content;
   if (isLoading) {
-    content = <Skeleton times={3} />;
+    content = <Skeleton times={5} />;
   } else if (error) {
     content = <div>Error</div>;
   } else {

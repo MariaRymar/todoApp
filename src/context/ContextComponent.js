@@ -2,6 +2,20 @@ import { createContext, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTasks } from "../store";
 
+//
+// import { useSelector, useDispatch } from "react-redux";
+import { changeChosenCategory } from "../store";
+import {
+  useFetchCategoriesQuery,
+  useDeleteCategoryMutation,
+} from "../store";
+
+
+import { BiCheckbox } from "react-icons/bi";
+import { TbCheckbox } from "react-icons/tb";
+import { FiTrash } from "react-icons/fi";
+//
+
 const Context = createContext();
 
 function ContextProvider({ children, basename }) {
@@ -18,7 +32,7 @@ function ContextProvider({ children, basename }) {
   const [isLoadingTasks, setIsLoadingTasks] = useState(false);
   const [loadingTasksError, setLoadingTasksError] = useState(null);
 
-  const { taskList, chosenCategory } = useSelector(
+  const { taskList, chosenCategory, searchTerm } = useSelector(
     ({ tasks: { taskList, searchTerm, chosenCategory } }) => {
       const filteredTasks = taskList.filter((task) => {
         if (
@@ -44,9 +58,10 @@ function ContextProvider({ children, basename }) {
         return task.value.toLowerCase().includes(searchTerm.toLowerCase());
       });
 
-      return { taskList: filteredTasks, chosenCategory };
+      return {taskList: filteredTasks, chosenCategory, searchTerm };
     }
   );
+
 
   useEffect(() => {
     setIsLoadingTasks(true);
@@ -56,7 +71,21 @@ function ContextProvider({ children, basename }) {
       .finally(() => setIsLoadingTasks(false));
   }, [dispatch]);
 
+// Menu 
+// const menuDispatch = useDispatch()
+// const { data, error, isLoading } = useFetchCategoriesQuery();
 
+//   const [deleteCategory, results] = useDeleteCategoryMutation();
+
+//   const handleDeleteCategory = (category, event) => {
+//     event.stopPropagation();
+//     deleteCategory(category.id)
+//   };
+//   const handleChangeChosenCategory =(mapCategoryValue) => {
+//     menuDispatch(changeChosenCategory(mapCategoryValue))
+//   } 
+ 
+ 
 
 //   // NAVIGATION
 
@@ -84,6 +113,9 @@ function ContextProvider({ children, basename }) {
         chosenCategory,
         navigate,
         currentPath,
+        searchTerm
+
+
       }}
     >
       {children}

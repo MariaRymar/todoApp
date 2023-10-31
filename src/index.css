@@ -73,7 +73,7 @@ h1 {
     flex-direction: column;
 }
 
-.vp-btn{
+.vp-btn {
     display: none;
 }
 
@@ -82,135 +82,49 @@ h1 {
 }
 
 
-@media screen and (max-width: 1500px) {
-    .main__container {
 
-        grid-template-columns: 33% 48%;
-        gap: 15%;
-        margin: 3rem 5rem;
-    }
-
-
-}
-
-@media screen and (max-width: 1200px) {
-    .main__container {
-
-        grid-template-columns: 36% 46%;
-        gap: 15%;
-        margin: 3rem 5rem;
-    }
-
-
-}
-
-@media screen and (max-width: 1100px) {
-    .main__container {
-
-        grid-template-columns: 42% 50%;
-        gap: 8%;
-        margin: 2rem 5rem;
-    }
-  
-
-
-
-
-}
-
-@media screen and (max-width: 900px) {
-    .main__container {
-        display: block;
-    }
-    .menu__container {
-        display: none;
-    }
-
-    /* .vp-btn {
-        align-self: flex-end;
-        display: block;
-        width: 10rem;
-        height: 3rem;
-        font-size: 1.5rem;
-        border-radius: 2rem;
-        background-color:#fff;
-        border: 1px solid var(--color-primary-variant)
-    } */
-    .menu-bar {
-        position: fixed;
-        align-items: center;
-        bottom: 0;
-        height: 5rem;
-        display: flex;
-        /* width: 100%; */
-        width: 70%;
-        background-color:rgb(77, 181, 255);
-        border-radius: 2rem;
-        align-self: center;
-        justify-content: space-around;
-        align-items:center;
-    }
-
-    .menu-bar div a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        column-gap: 5px;
-    }
-
-    .tasklist {
-        margin-top: 7rem !important;
-    }
-
-    .addInput {
-        margin-top: 5rem;
-    }
-
-    .right__container {
-        height: 100vh;
-        justify-content: space-between;
-    }
-    .container-lg {
-        /* margin-top: 7rem; */
-
-    }
-
-
-}
-
-@media screen and (max-width: 550px) { 
-    .container-lg {
-        margin-top: 0;
-
-    }
-
-    .tasklist {
-        margin-top: 1rem !important;
-    }
-
-    .addInput {
-        margin-top: 1rem;
-    } 
-    .task__right div {
-        display: none;
-    }
-
-  
+.today {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 3rem;
 }
 
 
-@media screen and (max-width: 450px) {
-    html {
-        font-size: 8px;
-    }
- }
+
+.btn-today {
+    text-align: center;
+    background-color: rgb(249, 250, 255);
+    border: 1px solid var(--color-primary-variant);
+    font-size: 1.6rem;
+    padding: 0 1rem;
+    border-radius: 2rem;
+    color: rgb(77 181 255 / 70%);
+    height: 3rem;
+    width: 13rem;
+    cursor: pointer;
+    animation: moveInUp .5s ease-out .75s;
+}
+
+.btn-today:hover {
+    /* box-shadow: 0 1rem 2rem rgba(67, 159, 234, 0.2); */
+}
+
+.btn-today:active {
+    transform: translateY(0.1rem);
+    /* font-size: 1.59rem; */
+    /* box-shadow: 0 .5rem 1rem rgba(67, 159, 234, 0.2); */
+}
 
 
- @media screen and (max-width: 350px) {
-    h1, h2 {
-        font-size: 3rem;
-    }
- }
+.clicked {
+    background-color: rgb(249, 251, 253);
+}
+
+.sm-add-task {
+    display: none;
+}
+
+
 /* TASK DETAIL */
 .task {
     display: flex;
@@ -342,3 +256,135 @@ h1 {
     background-image: linear-gradient(to right, rgb(229 231 235), white, rgb(229 231 235));
 }
 
+
+
+/* media */
+
+@media screen and (max-width: 1500px) {
+    .main__container {
+
+        grid-template-columns: 33% 48%;
+        gap: 15%;
+        margin: 3rem 5rem;
+    }
+
+
+}
+
+@media screen and (max-width: 1200px) {
+    .main__container {
+
+        grid-template-columns: 36% 46%;
+        gap: 15%;
+        margin: 3rem 5rem;
+    }
+
+
+}
+
+@media screen and (max-width: 1100px) {
+    .main__container {
+
+        grid-template-columns: 42% 50%;
+        gap: 8%;
+        margin: 2rem 5rem;
+    }
+
+
+
+
+
+}
+
+@media screen and (max-width: 900px) {
+    .main__container {
+        display: block;
+    }
+
+    .menu__container {
+        display: none;
+    }
+
+    .menu-bar {
+        margin-top: 4rem;
+        align-items: center;
+        display: flex;
+        display: block;
+        
+    }
+
+
+    .addInput {
+        display: none;
+    }
+
+    .right__container {
+        height: 100vh;
+        justify-content: space-between;
+    }
+
+    .sm-add-task {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        width: 7rem;
+        height: 7rem;
+        background-color: var(--color-primary-variant);
+        border-radius: 50%;
+        right: 5%;
+        bottom: 10%;
+    }
+
+    .sm-add-task>button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        color: white;
+        font-size: 3rem;
+
+    }
+
+
+
+}
+
+@media screen and (max-width: 550px) {
+    .container-lg {
+        margin-top: 0;
+
+    }
+
+    .tasklist {
+        margin-top: 1rem !important;
+    }
+
+    .addInput {
+        margin-top: 1rem;
+    }
+
+    .task__right div {
+        display: none;
+    }
+
+
+}
+
+
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 8px;
+    }
+}
+
+
+@media screen and (max-width: 380px) {
+
+    h1,
+    h2 {
+        font-size: 3rem;
+    }
+
+
+}

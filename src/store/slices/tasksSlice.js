@@ -3,7 +3,7 @@ import { fetchTasks } from "../thunks/fetchTasks";
 import { addTask } from "../thunks/addTask";
 import { deleteTask } from "../thunks/deleteTask";
 import { changeComplete } from "../thunks/changeComplete";
-import { deleteTasksByCategory } from "../thunks/deleteTasksByCategory";
+import { editTask } from "../thunks/editTask";
 
 const tasksSlice = createSlice({
   name: "tasks",
@@ -75,6 +75,25 @@ const tasksSlice = createSlice({
       });
     });
     builder.addCase(changeComplete.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.error;
+    });
+
+
+
+    builder.addCase(editTask.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(editTask.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.taskList = state.taskList.map((task) => {
+        if (task.id === action.payload.id) {
+          return action.payload;
+        }
+        return task;
+      });
+    });
+    builder.addCase(editTask.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.error;
     });
